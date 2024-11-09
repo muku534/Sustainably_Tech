@@ -9,15 +9,41 @@ import fontFamily from '../../../../constants/fontFamily';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Octicons from 'react-native-vector-icons/Octicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import ProductCard from '../../../Components/ProductCard/Index';
+import Card from '../../../Components/RecentViewCard/Index';
 
 const Home = () => {
     const [searchText, setSearchText] = useState('');
-    // State to keep track of whether the product is favorited
-    const [isFavorited, setIsFavorited] = useState(false);
+    const productData = [
+        {
+            id: 1,
+            imageSource: require("../../../../assets/images/Computers.png"),
+            productName: "MB Air M2 2022",
+            productSubtitle: "MacBook Series X",
+            price: "$2899.99",
+            isFavorited: false, // initial favorite status
+        },
+        {
+            id: 2,
+            imageSource: require("../../../../assets/images/Computers.png"),
+            productName: "iPhone 14 Pro Max",
+            productSubtitle: "Apple Smartphone",
+            price: "$1399.99",
+            isFavorited: false, // initial favorite status
+        },
+        // Add more products here...
+    ];
 
-    // Toggle the favorite status
-    const toggleFavorite = () => {
-        setIsFavorited(!isFavorited);
+    // State to track the favorite status of each product
+    const [favorites, setFavorites] = useState(
+        productData.map(product => product.isFavorited)
+    );
+
+    // Toggle favorite status for a specific product
+    const toggleFavorite = (index) => {
+        const updatedFavorites = [...favorites];
+        updatedFavorites[index] = !updatedFavorites[index];
+        setFavorites(updatedFavorites);
     };
 
     return (
@@ -74,239 +100,54 @@ const Home = () => {
                     </TouchableOpacity>
                 </View>
 
-                {/** product card */}
                 <View>
-
-                    <View style={{ justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', paddingVertical: hp(2), marginHorizontal: wp(5) }}>
+                    <View style={{ justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', marginVertical: hp(1), marginHorizontal: wp(5) }}>
                         <Text style={{ fontSize: hp(2.5), fontFamily: fontFamily.FONTS.Medium, color: COLORS.darkgray, }}>Popular Products</Text>
                         <TouchableOpacity>
                             <Text style={{ fontSize: hp(1.9), fontFamily: fontFamily.FONTS.regular, color: COLORS.darkgray1, }}>View All</Text>
                         </TouchableOpacity>
                     </View>
 
+                    {/** product card */}
                     <View style={{
-                        justifyContent: 'space-between',
                         flexDirection: 'row',
-                        alignItems: 'center',
-                        marginHorizontal: wp(4)
+                        flexWrap: 'wrap',
+                        justifyContent: 'space-between',
+                        marginHorizontal: wp(4),
+                        marginBottom: hp(1)
                     }}>
-                        <View style={{
-                            backgroundColor: COLORS.tertiaryWhite,
-                            justifyContent: 'center',
-                            // alignItems: 'center',
-                            paddingHorizontal: wp(4.2),
-                            paddingBottom: hp(1.2),
-                            borderRadius: wp(5),
-                            shadowColor: "#000",
-                            shadowOffset: { width: 0, height: 2 },
-                            shadowOpacity: 0.1,
-                            shadowRadius: 2,
-                            elevation: 7,
-                        }}>
-                            <Image
-                                source={require("../../../../assets/images/Computers.png")}
-                                resizeMode='contain'
-                                style={{ width: wp(36), height: wp(36) }}
+                        {productData.map((product, index) => (
+                            <ProductCard
+                                key={product.id}
+                                imageSource={product.imageSource}
+                                productName={product.productName}
+                                productSubtitle={product.productSubtitle}
+                                price={product.price}
+                                onToggleFavorite={() => toggleFavorite(index)}
+                                isFavorited={favorites[index]}
                             />
-                            <View>
-                                <Text style={{ paddingVertical: hp(0.1), fontSize: hp(2), color: COLORS.darkgray1, fontFamily: fontFamily.FONTS.bold }}>MB Air M2 2022</Text>
-                                <Text style={{ paddingVertical: hp(0.1), fontSize: hp(1.6), color: COLORS.gray, fontFamily: fontFamily.FONTS.Medium }}>MacBook Series X</Text>
-
-                                <View style={{ flexDirection: 'row', paddingTop: hp(0.2), justifyContent: 'space-between', alignItems: 'center' }}>
-                                    <Text style={{ paddingVertical: hp(1), fontSize: hp(2.1), color: COLORS.darkgray1, fontFamily: fontFamily.FONTS.bold }}>$2899.99</Text>
-                                    <TouchableOpacity style={{ backgroundColor: COLORS.white, }} activeOpacity={0.7} onPress={toggleFavorite}>
-                                        <MaterialCommunityIcons
-                                            name={isFavorited ? "cards-heart" : "cards-heart-outline"}
-                                            size={hp(3.4)}
-                                            color={isFavorited ? COLORS.red : COLORS.darkgray1}
-                                            style={{
-                                                backgroundColor: COLORS.white,
-                                                borderRadius: hp(1.5),
-                                                padding: hp(0.7),
-                                                shadowColor: "#000",
-                                                shadowOffset: { width: 0, height: 4 },
-                                                shadowOpacity: 0.15,
-                                                shadowRadius: 4,
-                                                elevation: 5,
-                                            }}
-                                        />
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                        </View>
-
-                        <View style={{
-                            backgroundColor: COLORS.tertiaryWhite,
-                            justifyContent: 'center',
-                            // alignItems: 'center',
-                            paddingHorizontal: wp(4.2),
-                            paddingBottom: hp(1.2),
-                            borderRadius: wp(5),
-                            shadowColor: "#000",
-                            shadowOffset: { width: 0, height: 2 },
-                            shadowOpacity: 0.1,
-                            shadowRadius: 2,
-                            elevation: 7,
-                        }}>
-                            <Image
-                                source={require("../../../../assets/images/Computers.png")}
-                                resizeMode='contain'
-                                style={{ width: wp(35), height: wp(35) }}
-                            />
-                            <View>
-                                <Text style={{ paddingVertical: hp(0.1), fontSize: hp(2), color: COLORS.darkgray1, fontFamily: fontFamily.FONTS.bold }}>MB Air M2 2022</Text>
-                                <Text style={{ paddingVertical: hp(0.1), fontSize: hp(1.6), color: COLORS.gray, fontFamily: fontFamily.FONTS.Medium }}>MacBook Series X</Text>
-                                <View style={{ flexDirection: 'row', paddingTop: hp(0.2), justifyContent: 'space-between', alignItems: 'center' }}>
-                                    <Text style={{ paddingVertical: hp(1), fontSize: hp(2.1), color: COLORS.darkgray1, fontFamily: fontFamily.FONTS.bold }}>$2899.99</Text>
-                                    <TouchableOpacity style={{ backgroundColor: COLORS.white, }} activeOpacity={0.7} onPress={toggleFavorite}>
-                                        <MaterialCommunityIcons
-                                            name={isFavorited ? "cards-heart" : "cards-heart-outline"}
-                                            size={hp(3.4)}
-                                            color={isFavorited ? COLORS.red : COLORS.darkgray1}
-                                            style={{
-                                                backgroundColor: COLORS.white,
-                                                borderRadius: hp(1.5),
-                                                padding: hp(0.7),
-                                                shadowColor: "#000",
-                                                shadowOffset: { width: 0, height: 4 },
-                                                shadowOpacity: 0.15,
-                                                shadowRadius: 1,
-                                                elevation: 5,
-                                            }}
-                                        />
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                        </View>
+                        ))}
                     </View>
                 </View>
 
-                {/** Recent Viewed product card */}
-                <View style={{ marginVertical: hp(1.5), }}>
+                <View>
                     <View style={{ justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', marginVertical: hp(1), marginHorizontal: wp(5) }}>
                         <Text style={{ fontSize: hp(2.5), fontFamily: fontFamily.FONTS.Medium, color: COLORS.darkgray, }}>Recent Viewed</Text>
                         <TouchableOpacity>
                             <Text style={{ fontSize: hp(1.9), fontFamily: fontFamily.FONTS.regular, color: COLORS.darkgray1, }}>View All</Text>
                         </TouchableOpacity>
                     </View>
-
-                    {/**Card */}
-                    <View style={{
-                        justifyContent: 'space-between',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        marginHorizontal: wp(4),
-                        marginVertical: hp(1)
-                    }}>
-                        <View style={{
-                            flexDirection: 'row',
-                            width: wp(90),
-                            backgroundColor: COLORS.tertiaryWhite,
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                            paddingHorizontal: wp(2),
-                            paddingBottom: hp(1.2),
-                            borderRadius: wp(5),
-                            shadowColor: "#000",
-                            shadowOffset: { width: 0, height: 2 },
-                            shadowOpacity: 0.1,
-                            shadowRadius: 2,
-                            elevation: 7,
-                        }}>
-                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <Image
-                                    source={require("../../../../assets/images/Computers.png")}
-                                    resizeMode='contain'
-                                    style={{ width: wp(22), height: wp(22) }}
-                                />
-                                <View style={{ paddingHorizontal: wp(3.5) }}>
-                                    <Text style={{ paddingVertical: hp(0.5), fontSize: hp(2), color: COLORS.darkgray1, fontFamily: fontFamily.FONTS.bold }}>MB Air M2 2022</Text>
-                                    <Text style={{ paddingVertical: hp(0.1), fontSize: hp(1.6), color: COLORS.gray, fontFamily: fontFamily.FONTS.Medium }}>MacBook Series X</Text>
-                                    <Text style={{ paddingVertical: hp(0.1), fontSize: hp(1.6), color: COLORS.gray, fontFamily: fontFamily.FONTS.Medium }}>MacBook Series X</Text>
-                                </View>
-                            </View>
-
-                            <View style={{ paddingHorizontal: wp(1.5), flexDirection: 'column', paddingTop: hp(2), justifyContent: 'space-between', alignItems: 'flex-end' }}>
-                                <TouchableOpacity style={{ backgroundColor: COLORS.white, paddingBottom: hp(0.5), }} activeOpacity={0.7} onPress={toggleFavorite}>
-                                    <MaterialCommunityIcons
-                                        name={isFavorited ? "cards-heart" : "cards-heart-outline"}
-                                        size={hp(2.5)}
-                                        color={isFavorited ? COLORS.red : COLORS.darkgray1}
-                                        style={{
-                                            backgroundColor: COLORS.white,
-                                            borderRadius: hp(1.5),
-                                            padding: hp(0.7),
-                                            shadowColor: "#000",
-                                            shadowOffset: { width: 0, height: 4 },
-                                            shadowOpacity: 0.15,
-                                            shadowRadius: 4,
-                                            elevation: 5,
-                                        }}
-                                    />
-                                </TouchableOpacity>
-                                <Text style={{ paddingVertical: hp(1), fontSize: hp(2.1), color: COLORS.darkgray1, fontFamily: fontFamily.FONTS.bold }}>$2899.99</Text>
-                            </View>
-                        </View>
-                    </View>
-
-                    {/**Card */}
-                    <View style={{
-                        justifyContent: 'space-between',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        marginHorizontal: wp(4),
-                        marginVertical: hp(1)
-                    }}>
-                        <View style={{
-                            flexDirection: 'row',
-                            width: wp(90),
-                            backgroundColor: COLORS.tertiaryWhite,
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                            paddingHorizontal: wp(2),
-                            paddingBottom: hp(1.2),
-                            borderRadius: wp(5),
-                            shadowColor: "#000",
-                            shadowOffset: { width: 0, height: 2 },
-                            shadowOpacity: 0.1,
-                            shadowRadius: 2,
-                            elevation: 7,
-                        }}>
-                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <Image
-                                    source={require("../../../../assets/images/Computers.png")}
-                                    resizeMode='contain'
-                                    style={{ width: wp(22), height: wp(22) }}
-                                />
-                                <View style={{ paddingHorizontal: wp(3.5) }}>
-                                    <Text style={{ paddingVertical: hp(0.5), fontSize: hp(2), color: COLORS.darkgray1, fontFamily: fontFamily.FONTS.bold }}>MB Air M2 2022</Text>
-                                    <Text style={{ paddingVertical: hp(0.1), fontSize: hp(1.6), color: COLORS.gray, fontFamily: fontFamily.FONTS.Medium }}>MacBook Series X</Text>
-                                    <Text style={{ paddingVertical: hp(0.1), fontSize: hp(1.6), color: COLORS.gray, fontFamily: fontFamily.FONTS.Medium }}>MacBook Series X</Text>
-                                </View>
-                            </View>
-
-                            <View style={{ paddingHorizontal: wp(1.5), flexDirection: 'column', paddingTop: hp(2), justifyContent: 'space-between', alignItems: 'flex-end' }}>
-                                <TouchableOpacity style={{ backgroundColor: COLORS.white, paddingBottom: hp(0.5), }} activeOpacity={0.7} onPress={toggleFavorite}>
-                                    <MaterialCommunityIcons
-                                        name={isFavorited ? "cards-heart" : "cards-heart-outline"}
-                                        size={hp(2.5)}
-                                        color={isFavorited ? COLORS.red : COLORS.darkgray1}
-                                        style={{
-                                            backgroundColor: COLORS.white,
-                                            borderRadius: hp(1.5),
-                                            padding: hp(0.7),
-                                            shadowColor: "#000",
-                                            shadowOffset: { width: 0, height: 4 },
-                                            shadowOpacity: 0.15,
-                                            shadowRadius: 4,
-                                            elevation: 5,
-                                        }}
-                                    />
-                                </TouchableOpacity>
-                                <Text style={{ paddingVertical: hp(1), fontSize: hp(2.1), color: COLORS.darkgray1, fontFamily: fontFamily.FONTS.bold }}>$2899.99</Text>
-                            </View>
-                        </View>
-                    </View>
+                    {productData.map((product, index) => (
+                        <Card
+                            key={product.id}
+                            imageSource={product.imageSource}
+                            productName={product.productName}
+                            productSubtitle={product.productSubtitle}
+                            price={product.price}
+                            onToggleFavorite={() => toggleFavorite(index)}
+                            isFavorited={favorites[index]}
+                        />
+                    ))}
                 </View>
             </ScrollView>
         </SafeAreaView>
@@ -361,7 +202,7 @@ const styles = StyleSheet.create({
     },
     filterButton: {
         position: 'absolute',
-        bottom: hp(1.8),
+        bottom: hp(1.4),
         right: wp(5),
         backgroundColor: '#ffffff',
         borderRadius: hp(3),
