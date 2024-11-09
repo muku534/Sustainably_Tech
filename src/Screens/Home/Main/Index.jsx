@@ -1,5 +1,5 @@
 import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { COLORS } from '../../../../constants';
 import {
     heightPercentageToDP as hp,
@@ -9,11 +9,22 @@ import fontFamily from '../../../../constants/fontFamily';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Octicons from 'react-native-vector-icons/Octicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import ProductCard from '../../../Components/ProductCard/Index';
 import Card from '../../../Components/RecentViewCard/Index';
+import RBSheet from 'react-native-raw-bottom-sheet';
 
 const Home = () => {
     const [searchText, setSearchText] = useState('');
+    const refRBSheet = useRef();
+    const [selectedCategory, setSelectedCategory] = useState(null);
+    const [selectedBrand, setSelectedBrand] = useState(null);
+    const [selectedPriceRange, setSelectedPriceRange] = useState(null); // New state for price range
+
+    const categories = ['Computers', 'Laptops', 'Accessories', 'Tablets', 'Smartphones'];
+    const brands = ['Apple', 'Samsung', 'HP', 'Dell'];
+    const priceRanges = ['Under $500', '$500 - $1000', '$1000 - $1500', 'Above $1500'];
+
     const productData = [
         {
             id: 1,
@@ -95,11 +106,96 @@ const Home = () => {
                     </View>
 
                     {/* Floating Filter Button */}
-                    <TouchableOpacity style={styles.filterButton} activeOpacity={0.7}>
+                    <TouchableOpacity style={styles.filterButton} activeOpacity={0.7} onPress={() => refRBSheet.current.open()}>
                         <MaterialCommunityIcons name="tune-variant" size={hp(3.5)} color={COLORS.primarygreen} />
                     </TouchableOpacity>
                 </View>
 
+                <RBSheet
+                    ref={refRBSheet}
+                    height={hp(35)} // Set a fixed height for the bottom sheet
+                    openDuration={250}
+                    closeOnDragDown={true}
+                    // dragFromTopOnly={true}
+                    draggable={true}
+                    customStyles={{
+                        container: {
+                            borderTopLeftRadius: 20,
+                            borderTopRightRadius: 20,
+                            backgroundColor: 'white',
+                        },
+                        draggableIcon: {
+                            backgroundColor: 'rgba(0, 0, 0, 0.2)',
+
+                        }
+                    }}
+                >
+                    <ScrollView style={styles.scrollContainer}>
+                        <View style={styles.filterContainer}>
+                            <Text style={styles.filterTitle}>Filter By</Text>
+
+                            {/* Category Filter */}
+                            <Text style={styles.sectionTitle}>Category</Text>
+                            {categories.map((category, index) => (
+                                <TouchableOpacity
+                                    key={index}
+                                    style={styles.radioButtonContainer}
+                                    onPress={() => setSelectedCategory(category)}
+                                >
+                                    <View style={styles.radioButton}>
+                                        {selectedCategory === category && <View style={styles.radioButtonSelected} />}
+                                    </View>
+                                    <Text style={styles.radioButtonText}>{category}</Text>
+                                </TouchableOpacity>
+                            ))}
+
+                            {/* Brand Filter */}
+                            <Text style={styles.sectionTitle}>Brand</Text>
+                            {brands.map((brand, index) => (
+                                <TouchableOpacity
+                                    key={index}
+                                    style={styles.radioButtonContainer}
+                                    onPress={() => setSelectedBrand(brand)}
+                                >
+                                    <View style={styles.radioButton}>
+                                        {selectedBrand === brand && <View style={styles.radioButtonSelected} />}
+                                    </View>
+                                    <Text style={styles.radioButtonText}>{brand}</Text>
+                                </TouchableOpacity>
+                            ))}
+
+                            {/* Price Range Filter */}
+                            <Text style={styles.sectionTitle}>Price Range</Text>
+                            {priceRanges.map((priceRange, index) => (
+                                <TouchableOpacity
+                                    key={index}
+                                    style={styles.radioButtonContainer}
+                                    onPress={() => setSelectedPriceRange(priceRange)}
+                                >
+                                    <View style={styles.radioButton}>
+                                        {selectedPriceRange === priceRange && <View style={styles.radioButtonSelected} />}
+                                    </View>
+                                    <Text style={styles.radioButtonText}>{priceRange}</Text>
+                                </TouchableOpacity>
+                            ))}
+
+                            {/* Apply Button */}
+                            <TouchableOpacity
+                                style={styles.applyButton}
+                                onPress={() => {
+                                    refRBSheet.current.close();
+                                    console.log('Selected Category:', selectedCategory);
+                                    console.log('Selected Brand:', selectedBrand);
+                                    console.log('Selected Price Range:', selectedPriceRange);
+                                }}
+                            >
+                                <Text style={styles.applyButtonText}>Apply Filters</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </ScrollView>
+                </RBSheet>
+
+                {/** product card */}
                 <View>
                     <View style={{ justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', marginVertical: hp(1), marginHorizontal: wp(5) }}>
                         <Text style={{ fontSize: hp(2.5), fontFamily: fontFamily.FONTS.Medium, color: COLORS.darkgray, }}>Popular Products</Text>
@@ -108,7 +204,6 @@ const Home = () => {
                         </TouchableOpacity>
                     </View>
 
-                    {/** product card */}
                     <View style={{
                         flexDirection: 'row',
                         flexWrap: 'wrap',
@@ -130,6 +225,8 @@ const Home = () => {
                     </View>
                 </View>
 
+
+                {/** recent viewed product */}
                 <View>
                     <View style={{ justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', marginVertical: hp(1), marginHorizontal: wp(5) }}>
                         <Text style={{ fontSize: hp(2.5), fontFamily: fontFamily.FONTS.Medium, color: COLORS.darkgray, }}>Recent Viewed</Text>
@@ -150,7 +247,7 @@ const Home = () => {
                     ))}
                 </View>
             </ScrollView>
-        </SafeAreaView>
+        </SafeAreaView >
     );
 }
 
@@ -212,5 +309,59 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 8,
         elevation: 10,
+    },
+    scrollContainer: {
+        flex: 1,
+    },
+    filterContainer: {
+        padding: hp(2),
+    },
+    filterTitle: {
+        fontSize: hp(2.3),
+        fontWeight: 'bold',
+        color: COLORS.darkgray,
+        marginBottom: hp(1),
+    },
+    radioButtonContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: hp(1),
+    },
+    radioButton: {
+        height: wp(5.5),
+        width: wp(5.5),
+        borderRadius: wp(5.5),
+        borderWidth: 2,
+        borderColor: COLORS.primaryBlue,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginRight: wp(2),
+    },
+    radioButtonSelected: {
+        height: 10,
+        width: 10,
+        borderRadius: 5,
+        backgroundColor: COLORS.primaryBlue,
+    },
+    radioButtonText: {
+        fontSize: hp(2.2),
+        color: COLORS.darkgray,
+    },
+    applyButton: {
+        marginTop: hp(3),
+        backgroundColor: COLORS.primaryBlue,
+        paddingVertical: hp(1.5),
+        borderRadius: hp(1),
+        alignItems: 'center',
+    },
+    applyButtonText: {
+        color: 'white',
+        fontSize: hp(2.1),
+    },
+    sectionTitle: {
+        fontSize: hp(2),
+        color: COLORS.darkgray,
+        fontWeight: 'bold',
+        marginVertical: hp(1),
     },
 });
