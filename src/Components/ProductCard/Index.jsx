@@ -14,6 +14,8 @@ const ProductCard = ({ imageSource, productName, productSubtitle, price, onToggl
         <View>
             <View style={{
                 backgroundColor: COLORS.tertiaryWhite,
+                width: wp(45),
+                marginVertical: hp(1.2),
                 justifyContent: 'center',
                 // alignItems: 'center',
                 paddingHorizontal: wp(4.2),
@@ -31,8 +33,8 @@ const ProductCard = ({ imageSource, productName, productSubtitle, price, onToggl
                     style={{ width: wp(36), height: wp(36) }}
                 />
                 <View>
-                    <Text style={{ paddingVertical: hp(0.1), fontSize: hp(2), color: COLORS.darkgray1, fontFamily: fontFamily.FONTS.bold }}>{productName}</Text>
-                    <Text style={{ paddingVertical: hp(0.1), fontSize: hp(1.6), color: COLORS.gray, fontFamily: fontFamily.FONTS.Medium }}>{productSubtitle}</Text>
+                    <Text style={{ paddingVertical: hp(0.1), fontSize: hp(2), color: COLORS.darkgray1, fontFamily: fontFamily.FONTS.bold }} numberOfLines={1}>{productName}</Text>
+                    <Text style={{ paddingVertical: hp(0.1), fontSize: hp(1.6), color: COLORS.gray, fontFamily: fontFamily.FONTS.Medium }} numberOfLines={1}>{productSubtitle}</Text>
 
                     <View style={{ flexDirection: 'row', paddingTop: hp(0.2), justifyContent: 'space-between', alignItems: 'center' }}>
                         <Text style={{ paddingVertical: hp(1), fontSize: hp(2.1), color: COLORS.darkgray1, fontFamily: fontFamily.FONTS.bold }}>{price}</Text>
