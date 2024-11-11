@@ -31,27 +31,3 @@ const App = () => {
 }
 
 export default App;
-
-
-// import * as React from 'react';
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// import { SplashScreen } from './src/Screens/Index';
-
-// const Stack = createNativeStackNavigator();
-
-// const App = () => {
-//   return (
-//     <NavigationContainer>
-//       <Stack.Navigator>
-//         <Stack.Screen
-//           name="SplashScreen"
-//           component={SplashScreen}
-//           options={{ title: 'Welcome' }}
-//         />
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   );
-// };
-
-// export default App

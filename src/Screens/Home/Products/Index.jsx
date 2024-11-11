@@ -1,4 +1,4 @@
-import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { FlatList, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useRef, useState } from 'react'
 import { COLORS } from '../../../../constants'
 import {
@@ -35,7 +35,7 @@ const Products = ({ navigation }) => {
         },
         {
             id: 2,
-            imageSource: require("../../../../assets/images/Computers.png"),
+            imageSource: require("../../../../assets/images/th__1_-removebg-preview.png"),
             productName: "iPhone 14 Pro Max",
             productSubtitle: "Apple Smartphone",
             price: "$1399.99",
@@ -44,7 +44,7 @@ const Products = ({ navigation }) => {
         },
         {
             id: 3,
-            imageSource: require("../../../../assets/images/Computers.png"),
+            imageSource: require("../../../../assets/images/Accessorie.png"),
             productName: "Sony WH-1000XM4",
             productSubtitle: "Wireless Headphones",
             price: "$349.99",
@@ -53,7 +53,7 @@ const Products = ({ navigation }) => {
         },
         {
             id: 4,
-            imageSource: require("../../../../assets/images/Computers.png"),
+            imageSource: require("../../../../assets/images/Acer_Aspire_3_AMD_3020e_Dual_core_Processor-removebg-preview.png"),
             productName: "Samsung Galaxy Watch 5",
             productSubtitle: "Smartwatch",
             price: "$249.99",
@@ -62,7 +62,7 @@ const Products = ({ navigation }) => {
         },
         {
             id: 5,
-            imageSource: require("../../../../assets/images/Computers.png"),
+            imageSource: require("../../../../assets/images/Lenovo_IdeaPad_Slim_3_Intel-removebg-preview.png"),
             productName: "Dell XPS 13",
             productSubtitle: "Ultrabook Laptop",
             price: "$1199.99",
@@ -80,7 +80,7 @@ const Products = ({ navigation }) => {
         },
         {
             id: 7,
-            imageSource: require("../../../../assets/images/Computers.png"),
+            imageSource: require("../../../../assets/images/Monitor.png"),
             productName: "Samsung QLED 65\"",
             productSubtitle: "Smart TV",
             price: "$1499.99",
@@ -89,7 +89,7 @@ const Products = ({ navigation }) => {
         },
         {
             id: 8,
-            imageSource: require("../../../../assets/images/Computers.png"),
+            imageSource: require("../../../../assets/images/Accessorie.png"),
             productName: "Bose SoundLink",
             productSubtitle: "Portable Speaker",
             price: "$199.99",
@@ -98,7 +98,7 @@ const Products = ({ navigation }) => {
         },
         {
             id: 9,
-            imageSource: require("../../../../assets/images/Computers.png"),
+            imageSource: require("../../../../assets/images/banner.png"),
             productName: "Canon EOS R5",
             productSubtitle: "Mirrorless Camera",
             price: "$3899.99",
@@ -107,7 +107,7 @@ const Products = ({ navigation }) => {
         },
         {
             id: 10,
-            imageSource: require("../../../../assets/images/Computers.png"),
+            imageSource: require("../../../../assets/images/th-removebg-preview.png"),
             productName: "Apple Watch Series 8",
             productSubtitle: "Smartwatch",
             price: "$499.99",
@@ -116,7 +116,7 @@ const Products = ({ navigation }) => {
         },
         {
             id: 11,
-            imageSource: require("../../../../assets/images/Accessories.png"),
+            imageSource: require("../../../../assets/images/Accessorie.png"),
             productName: "AirPods Pro 2",
             productSubtitle: "Apple Earbuds",
             price: "$249.99",
@@ -125,7 +125,7 @@ const Products = ({ navigation }) => {
         },
         {
             id: 12,
-            imageSource: require("../../../../assets/images/Computers.png"),
+            imageSource: require("../../../../assets/images/Lenovo_IdeaPad_Slim_3_Intel-removebg-preview.png"),
             productName: "Microsoft Surface Pro 9",
             productSubtitle: "2-in-1 Tablet",
             price: "$1299.99",
@@ -175,6 +175,19 @@ const Products = ({ navigation }) => {
         setSelectedPriceRange(null);
         // refRBSheet.current.close(); // Close the filter sheet after clearing
     };
+
+    // In the Products component...
+    const renderProductCard = ({ item, index }) => (
+        <ProductCard
+            key={item.id} // Not necessary with FlatList, but can be useful in the function
+            imageSource={item.imageSource}
+            productName={item.productName}
+            productSubtitle={item.productSubtitle}
+            price={item.price}
+            onToggleFavorite={() => toggleFavorite(index)}
+            isFavorited={favorites[index]}
+        />
+    );
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.secondaryWhite }}>
@@ -292,26 +305,17 @@ const Products = ({ navigation }) => {
 
                 {/** product card */}
                 <View>
-                    <ScrollView contentContainerStyle={{ paddingBottom: hp(25) }}>
-                        <View style={{
-                            flexDirection: 'row',
-                            flexWrap: 'wrap',
-                            justifyContent: 'space-between',
-                            marginHorizontal: wp(4),
-                        }}>
-                            {filteredProducts.map((product, index) => (
-                                <ProductCard
-                                    key={product.id}
-                                    imageSource={product.imageSource}
-                                    productName={product.productName}
-                                    productSubtitle={product.productSubtitle}
-                                    price={product.price}
-                                    onToggleFavorite={() => toggleFavorite(index)}
-                                    isFavorited={favorites[index]}
-                                />
-                            ))}
-                        </View>
-                    </ScrollView>
+                    <FlatList
+                        data={filteredProducts}
+                        renderItem={renderProductCard}
+                        keyExtractor={(item) => item.id.toString()}
+                        numColumns={2}
+                        contentContainerStyle={{
+                            paddingBottom: hp(25),
+                            paddingHorizontal: wp(4),
+                        }}
+                        columnWrapperStyle={{ justifyContent: 'space-between' }}
+                    />
                 </View>
 
             </View>

@@ -67,9 +67,7 @@ const Card = ({ imageSource, productName, productSubtitle, price, onToggleFavori
                     <Text style={{ paddingVertical: hp(1), fontSize: hp(2.1), color: COLORS.darkgray1, fontFamily: fontFamily.FONTS.bold }}>{price}</Text>
                 </View>
             </View>
-        </View >
-
-
+        </View>
     )
 }
 

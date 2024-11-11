@@ -5,6 +5,9 @@ import {
     widthPercentageToDP as wp,
 } from '../../../Components/Pixel/Index';
 import fontFamily from '../../../../constants/fontFamily';
+import LinearGradient from 'react-native-linear-gradient';
+import { useState } from 'react';
+import Button from '../../../Components/Button';
 
 // Reusable component for Image Container
 const ImageContainer = ({ source, containerStyle, imageStyle }) => (
@@ -13,7 +16,16 @@ const ImageContainer = ({ source, containerStyle, imageStyle }) => (
     </View>
 );
 
-const Welcome = ({navigation}) => {
+const Welcome = ({ navigation }) => {
+    const [loading, setLoading] = useState(false); // Add loading state
+
+    const handleSignup = () => {
+        setLoading(true); // Set loading to true to show loader
+        setTimeout(() => {
+            setLoading(false); // Hide loader after 1 second
+            navigation.navigate("Login"); // Navigate after loading completes
+        }, 10);
+    };
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar backgroundColor={COLORS.secondaryWhite} barStyle='dark-content' />
@@ -84,20 +96,11 @@ const Welcome = ({navigation}) => {
                     </Text>
 
                     <View style={{ width: '100%', alignItems: 'center', marginTop: hp(4) }}>
-                        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-                            <View style={{
-                                backgroundColor: COLORS.primaryBlue,
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                borderRadius: wp(2),
-                                width: wp(90),
-                                // marginHorizontal: 52
-                            }}>
-                                <Text style={{ color: COLORS.secondaryWhite, fontWeight: '600', padding: hp(1.5), fontSize: hp(2.2) }}>
-                                    Get Started
-                                </Text>
-                            </View>
-                        </TouchableOpacity>
+                        <Button
+                            title={"Get Started"}
+                            onPress={handleSignup}
+                            loading={loading}
+                        />
                     </View>
                 </View>
             </ScrollView>

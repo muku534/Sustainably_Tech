@@ -10,6 +10,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import LinearGradient from 'react-native-linear-gradient';
 
 const Tab = createBottomTabNavigator();
 
@@ -52,7 +53,7 @@ const TabStack = ({ navigation }) => {
                                 <AntDesign
                                     name="home"
                                     size={hp(focused ? 3.8 : 3.5)}
-                                    color={focused ? COLORS.primarygreen : COLORS.darkgray}
+                                    color={focused ? COLORS.primaryBlue : COLORS.darkgray}
                                 />
                                 {focused && <AnimatedDot />}
                             </View>
@@ -70,11 +71,12 @@ const TabStack = ({ navigation }) => {
                                 <MaterialCommunityIcons
                                     name="shopping-outline"
                                     size={hp(focused ? 3.8 : 3.5)}
-                                    color={focused ? COLORS.primarygreen : COLORS.darkgray}
+                                    color={focused ? COLORS.primaryBlue : COLORS.darkgray}
                                 />
                                 {focused && <AnimatedDot />}
                             </View>
                         ),
+                        tabBarStyle: { display: 'none' },
                     }}
                 />
                 {/* Floating Central Button */}
@@ -85,26 +87,36 @@ const TabStack = ({ navigation }) => {
                         headerShown: false,
                         tabBarLabel: 'Products',
                         tabBarIcon: ({ focused }) => (
-                            <View style={styles.centerButton}>
+                            <LinearGradient
+                                colors={['#3955E9', '#6A3DE8']} // Colors for the gradient
+                                style={styles.centerButton}
+                                start={{ x: 0, y: 0 }} // Gradient start point
+                                end={{ x: 1, y: 0 }}   // Gradient end point (horizontal)
+                            >
                                 <MaterialCommunityIcons
                                     name="view-grid-outline"
-                                    size={hp(4.3)}
+                                    size={hp(4)}
                                     color={COLORS.white}
                                 />
-                            </View>
+                            </LinearGradient>
                         ),
                         tabBarButton: (props) => (
                             <TouchableOpacity
                                 {...props}
                                 style={styles.centerButtonWrapper}
                             >
-                                <View style={styles.centerButton}>
+                                <LinearGradient
+                                    colors={['#3955E9', '#6A3DE8']} // Colors for the gradient
+                                    style={styles.centerButton}
+                                    start={{ x: 0, y: 0 }} // Gradient start point
+                                    end={{ x: 1, y: 0 }}   // Gradient end point (horizontal)
+                                >
                                     <MaterialCommunityIcons
                                         name="view-grid-outline"
-                                        size={hp(4.3)}
+                                        size={hp(4)}
                                         color={COLORS.white}
                                     />
-                                </View>
+                                </LinearGradient>
                             </TouchableOpacity>
                         ),
                     }}
@@ -120,7 +132,7 @@ const TabStack = ({ navigation }) => {
                                 <MaterialCommunityIcons
                                     name="cards-heart-outline"
                                     size={hp(focused ? 3.8 : 3.5)}
-                                    color={focused ? COLORS.primarygreen : COLORS.darkgray}
+                                    color={focused ? COLORS.primaryBlue : COLORS.darkgray}
                                 />
                                 {focused && <AnimatedDot />}
                             </View>
@@ -138,7 +150,7 @@ const TabStack = ({ navigation }) => {
                                 <FontAwesome
                                     name="user-o"
                                     size={hp(focused ? 3.6 : 3.3)}
-                                    color={focused ? COLORS.primarygreen : COLORS.darkgray}
+                                    color={focused ? COLORS.primaryBlue : COLORS.darkgray}
                                 />
                                 {focused && <AnimatedDot />}
                             </View>
@@ -156,8 +168,8 @@ const AnimatedDot = () => {
     React.useEffect(() => {
         Animated.loop(
             Animated.sequence([
-                Animated.timing(animation, { toValue: 1, duration: 500, useNativeDriver: true }),
-                Animated.timing(animation, { toValue: 0, duration: 500, useNativeDriver: true }),
+                Animated.timing(animation, { toValue: 1, duration: 100, useNativeDriver: true }),
+                Animated.timing(animation, { toValue: 0, duration: 100, useNativeDriver: true }),
             ])
         ).start();
     }, []);
@@ -175,7 +187,7 @@ const styles = StyleSheet.create({
     dot: {
         width: wp(1.5),
         height: wp(1.5),
-        backgroundColor: COLORS.primarygreen,
+        backgroundColor: COLORS.primaryBlue,
         borderRadius: wp(0.75),
         marginTop: hp(0.5),
     },
@@ -183,15 +195,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     centerButtonWrapper: {
-        top: -hp(2.3),
+        top: -hp(2.5),
         justifyContent: 'center',
         alignItems: 'center',
     },
     centerButton: {
-        width: hp(7),
-        height: hp(7),
-        borderRadius: hp(7),
-        backgroundColor: COLORS.primarygreen,
+        width: hp(7.5),
+        height: hp(7.5),
+        borderRadius: hp(7.5),
+        backgroundColor: COLORS.primaryBlue,
         justifyContent: 'center',
         alignItems: 'center',
 

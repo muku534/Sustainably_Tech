@@ -6,11 +6,22 @@ import {
     widthPercentageToDP as wp,
 } from '../../../Components/Pixel/Index';
 import fontFamily from '../../../../constants/fontFamily';
+import LinearGradient from 'react-native-linear-gradient';
+import Button from '../../../Components/Button';
 
 const SignUp = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [loading, setLoading] = useState(false); // Add loading state
+
+    const handleSignup = () => {
+        setLoading(true); // Set loading to true to show loader
+        setTimeout(() => {
+            setLoading(false); // Hide loader after 1 second
+            navigation.navigate("TabStack"); // Navigate after loading completes
+        }, 1000);
+    };
 
     return (
         <KeyboardAvoidingView style={{ flex: 1, backgroundColor: COLORS.lightGolden }} behavior='position'>
@@ -68,9 +79,11 @@ const SignUp = ({ navigation }) => {
                         </View>
 
                         <View style={styles.buttonContainer}>
-                            <TouchableOpacity style={styles.loginButton}>
-                                <Text style={styles.loginButtonText}>Signup</Text>
-                            </TouchableOpacity>
+                            <Button
+                                title={"Signup"}
+                                onPress={handleSignup}
+                                loading={loading}
+                            />
                         </View>
                     </View>
 
