@@ -104,7 +104,7 @@ const Cart = ({ navigation }) => {
                             style={styles.iconSpacing}
                         />
                     </TouchableOpacity>
-                    <Text style={{ color: COLORS.darkgray1, fontSize: hp(2.5), fontFamily: fontFamily.FONTS.bold }}>
+                    <Text style={{ color: COLORS.darkgray, fontSize: hp(2.5), fontFamily: fontFamily.FONTS.bold }}>
                         My Cart
                     </Text>
                     <TouchableOpacity>

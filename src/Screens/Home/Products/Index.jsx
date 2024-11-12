@@ -204,7 +204,7 @@ const Products = ({ navigation }) => {
                         />
                     </TouchableOpacity>
                     <Text style={{ color: COLORS.darkgray1, fontSize: hp(2.5), fontFamily: fontFamily.FONTS.bold }}>Products</Text>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate("Cart")}>
                         <MaterialCommunityIcons
                             name="shopping-outline"
                             size={hp(3.5)}
@@ -226,7 +226,6 @@ const Products = ({ navigation }) => {
                     height={hp(35)} // Set a fixed height for the bottom sheet
                     openDuration={250}
                     closeOnDragDown={true}
-                    closeDuration={250}
                     // dragFromTopOnly={true}
                     draggable={true}
                     customStyles={{

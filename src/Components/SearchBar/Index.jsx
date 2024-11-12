@@ -33,15 +33,8 @@ const SearchBar = ({ searchText, setSearchText, onFilterPress }) => {
             </View>
 
             {/* Floating Filter Button */}
-            <TouchableOpacity activeOpacity={0.7} onPress={onFilterPress}>
-                <LinearGradient
-                    colors={['#3955E9', '#6A3DE8']} // Colors for the gradient
-                    style={styles.filterButton}
-                    start={{ x: 0, y: 0 }} // Gradient start point
-                    end={{ x: 1, y: 0 }}   // Gradient end point (horizontal)
-                >
-                    <MaterialCommunityIcons name="tune-variant" size={hp(3.5)} color={COLORS.tertiaryWhite} />
-                </LinearGradient>
+            <TouchableOpacity style={styles.filterButton} activeOpacity={0.7} onPress={onFilterPress}>
+                <MaterialCommunityIcons name="tune-variant" size={hp(3.5)} color={COLORS.tertiaryWhite} />
             </TouchableOpacity>
         </View>
     )
@@ -78,7 +71,8 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: hp(1.4),
         right: wp(5),
-        backgroundColor: COLORS.lightBlue,
+        // backgroundColor: COLORS.lightBlue,
+        backgroundColor: '#4A46E9',
         borderRadius: hp(3),
         padding: hp(1.5),
         shadowColor: "#000",

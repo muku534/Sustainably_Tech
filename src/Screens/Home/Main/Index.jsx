@@ -12,7 +12,7 @@ import Card from '../../../Components/RecentViewCard/Index';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import SearchBar from '../../../Components/SearchBar/Index';
 
-const Home = () => {
+const Home = ({ navigation }) => {
     const [searchText, setSearchText] = useState('');
     const refRBSheet = useRef();
     const [selectedCategory, setSelectedCategory] = useState(null);
@@ -74,7 +74,7 @@ const Home = () => {
                             style={styles.iconSpacing}
                         />
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate("Notification")}>
                         <Ionicons
                             name="notifications-outline"
                             size={hp(3.6)}
