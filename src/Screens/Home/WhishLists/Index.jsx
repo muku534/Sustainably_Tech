@@ -10,6 +10,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Button from '../../../Components/Button';
 import Card from '../../../Components/RecentViewCard/Index';
+import Header from '../../../Components/Header/Index';
 
 const Whishlists = ({ navigation }) => {
     const productData = [
@@ -70,27 +71,15 @@ const Whishlists = ({ navigation }) => {
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.secondaryWhite }}>
             <View style={styles.container}>
                 {/* Header */}
-                <View style={styles.headerContainer}>
-                    <TouchableOpacity onPress={() => navigation.goBack()}>
-                        <MaterialCommunityIcons
-                            name="arrow-left"
-                            size={hp(3.4)}
-                            color={COLORS.darkgray1}
-                            style={styles.iconSpacing}
-                        />
-                    </TouchableOpacity>
-                    <Text style={{ color: COLORS.darkgray, fontSize: hp(2.5), fontFamily: fontFamily.FONTS.bold }}>
-                        Wishlist
-                    </Text>
-                    <TouchableOpacity onPress={() => navigation.navigate("Cart")}>
-                        <MaterialCommunityIcons
-                            name="shopping-outline"
-                            size={hp(3.3)}
-                            color={COLORS.darkgray}
-                        />
-                    </TouchableOpacity>
-                </View>
-
+                <Header
+                    text="Wishlist"
+                    iconLibrary="MaterialCommunityIcons"
+                    iconName="shopping-outline"
+                    iconColor={COLORS.darkgray1}
+                    iconSize={hp(3.4)}
+                    onPress={() => navigation.navigate('Cart')}
+                    navigation={navigation}
+                />
 
                 <FlatList
                     data={products}

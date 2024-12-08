@@ -11,6 +11,7 @@ import Cart from "./Home/Cart/Index";
 import Checkout from "./Home/Checkout/Index";
 import Whishlists from "./Home/WhishLists/Index";
 import Notification from "./Home/Notification/Index";
+import Messages from "./Home/Messages/Index";
 // import OrderHistory from "./Settings/OrderHistory/Index";
 // import OrderDetails from "./Settings/OrderDetails/Index";
 // import PaymentMethod from "./Settings/PaymentMethod/Index";
@@ -38,6 +39,6 @@ export {
     Profile,
     EditProfile,
     AddAdress,
-
+    Messages
 }
 

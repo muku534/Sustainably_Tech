@@ -9,6 +9,7 @@ import fontFamily from '../../../../constants/fontFamily';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Button from '../../../Components/Button';
+import Header from '../../../Components/Header/Index';
 
 const Cart = ({ navigation }) => {
     const productData = [
@@ -95,29 +96,14 @@ const Cart = ({ navigation }) => {
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.secondaryWhite }}>
             <View style={styles.container}>
                 {/* Header */}
-                <View style={styles.headerContainer}>
-                    <TouchableOpacity onPress={() => navigation.goBack()}>
-                        <MaterialCommunityIcons
-                            name="arrow-left"
-                            size={hp(3.4)}
-                            color={COLORS.darkgray1}
-                            style={styles.iconSpacing}
-                        />
-                    </TouchableOpacity>
-                    <Text style={{ color: COLORS.darkgray, fontSize: hp(2.5), fontFamily: fontFamily.FONTS.bold }}>
-                        My Cart
-                    </Text>
-                    <TouchableOpacity>
-                        <Ionicons
-                            name="reorder-three"
-                            size={hp(3.7)}
-                            color={COLORS.darkgray}
-                            style={styles.iconSpacing}
-                        />
-                    </TouchableOpacity>
-                </View>
-
-
+                <Header
+                    text="My Cart"
+                    iconLibrary="Ionicons"
+                    iconName="reorder-three"
+                    iconColor={COLORS.darkgray1}
+                    iconSize={hp(3.4)}
+                    navigation={navigation}
+                />
                 {/* Cart Items */}
                 <FlatList
                     data={products}
@@ -135,8 +121,8 @@ const Cart = ({ navigation }) => {
 
                     <Button
                         title={"Checkout"}
-                        // onPress={handleSignup}
-                        // loading={loading}
+                    // onPress={handleSignup}
+                    // loading={loading}
                     />
                 </View>
 

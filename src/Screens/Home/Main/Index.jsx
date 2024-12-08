@@ -67,7 +67,7 @@ const Home = ({ navigation }) => {
                         style={styles.profileImage}
                     />
                     <View style={styles.iconRow}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate("Messages")}>
                             <Ionicons
                                 name="chatbox-ellipses-outline"
                                 size={hp(3.6)}
@@ -181,7 +181,7 @@ const Home = ({ navigation }) => {
                 <View>
                     <View style={{ justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', marginVertical: hp(1), marginHorizontal: wp(5) }}>
                         <Text style={{ fontSize: hp(2.5), fontFamily: fontFamily.FONTS.Medium, color: COLORS.darkgray, }}>Popular Products</Text>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate("Products")}>
                             <Text style={{ fontSize: hp(1.9), fontFamily: fontFamily.FONTS.regular, color: COLORS.darkgray1, }}>View All</Text>
                         </TouchableOpacity>
                     </View>
@@ -211,7 +211,7 @@ const Home = ({ navigation }) => {
                 <View>
                     <View style={{ justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', marginVertical: hp(1), marginHorizontal: wp(5) }}>
                         <Text style={{ fontSize: hp(2.5), fontFamily: fontFamily.FONTS.Medium, color: COLORS.darkgray, }}>Recent Viewed</Text>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate("Products")}>
                             <Text style={{ fontSize: hp(1.9), fontFamily: fontFamily.FONTS.regular, color: COLORS.darkgray1, }}>View All</Text>
                         </TouchableOpacity>
                     </View>

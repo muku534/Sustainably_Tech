@@ -4,6 +4,7 @@ import { COLORS } from '../../../../constants';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from '../../../Components/Pixel/Index';
 import fontFamily from '../../../../constants/fontFamily';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Header from '../../../Components/Header/Index';
 
 // Sample notifications data
 const notificationsData = [
@@ -83,18 +84,11 @@ const NotificationScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.screenContainer}>
             <StatusBar backgroundColor={COLORS.white} barStyle='dark-content' />
-            <View style={styles.headerContainer}>
-                <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <MaterialCommunityIcons
-                        name="arrow-left"
-                        size={hp(3.4)}
-                        color={COLORS.darkgray1}
-                        style={styles.iconSpacing}
-                    />
-                </TouchableOpacity>
-                <Text style={styles.headerTitle}>Notifications</Text>
-                <View style={{ width: hp(3.4) }} />
-            </View>
+            <Header
+                text="Notifications"
+                iconSize={hp(3.4)}
+                navigation={navigation}
+            />
 
             {/* FlatList for notifications */}
             <FlatList

@@ -11,6 +11,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import SearchBar from '../../../Components/SearchBar/Index';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import ProductCard from '../../../Components/ProductCard/Index';
+import Header from '../../../Components/Header/Index';
 
 const Products = ({ navigation }) => {
     const [searchText, setSearchText] = useState('');
@@ -193,27 +194,15 @@ const Products = ({ navigation }) => {
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.secondaryWhite }}>
             <View style={styles.container}>
                 {/**Header */}
-                <View style={styles.headerContainer}>
-                    {/* Profile Picture and Icons */}
-                    <TouchableOpacity onPress={() => navigation.goBack()}>
-                        <FontAwesome6
-                            name="angle-left"
-                            size={hp(3.4)}
-                            color={COLORS.darkgray1}
-                            style={styles.iconSpacing}
-                        />
-                    </TouchableOpacity>
-                    <Text style={{ color: COLORS.darkgray1, fontSize: hp(2.5), fontFamily: fontFamily.FONTS.bold }}>Products</Text>
-                    <TouchableOpacity onPress={() => navigation.navigate("Cart")}>
-                        <MaterialCommunityIcons
-                            name="shopping-outline"
-                            size={hp(3.5)}
-                            color={COLORS.darkgray}
-                            style={styles.iconSpacing}
-                        />
-                    </TouchableOpacity>
-                </View>
-
+                <Header
+                    text="Products"
+                    iconLibrary="MaterialCommunityIcons"
+                    iconName="shopping-outline"
+                    iconColor={COLORS.darkgray1}
+                    iconSize={hp(3.4)}
+                    onPress={() => navigation.navigate('Cart')}
+                    navigation={navigation}
+                />
                 <SearchBar
                     searchText={searchText}
                     setSearchText={setSearchText}
