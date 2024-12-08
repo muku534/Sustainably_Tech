@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View, FlatList, Image } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View, FlatList, Image, StatusBar } from 'react-native';
 import React, { useState } from 'react';
 import { COLORS } from '../../../../constants';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from '../../../Components/Pixel/Index';
@@ -55,13 +55,14 @@ const NotificationScreen = ({ navigation }) => {
         return (
             <TouchableOpacity
                 style={[styles.notificationCard,]}
+                activeOpacity={0.6}
             // onPress={() => markAsRead(item.id)}
             >
                 <View style={styles.notificationIconContainer}>
                     <MaterialCommunityIcons
                         name={item.type === 'order' ? 'package-variant' : item.type === 'message' ? 'message' : 'alert'}
                         size={hp(3.4)}
-                        color={COLORS.primary}
+                        color={COLORS.darkgray1}
                     />
                 </View>
                 <View style={styles.notificationTextContainer}>
@@ -81,6 +82,7 @@ const NotificationScreen = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.screenContainer}>
+            <StatusBar backgroundColor={COLORS.white} barStyle='dark-content' />
             <View style={styles.headerContainer}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
                     <MaterialCommunityIcons
@@ -150,17 +152,17 @@ const styles = StyleSheet.create({
     },
     notificationTitle: {
         fontSize: hp(2.1),
-        fontFamily: fontFamily.FONTS.Medium,
+        fontFamily: fontFamily.FONTS.bold,
         color: COLORS.darkgray,
     },
     notificationMessage: {
         fontSize: hp(1.8),
-        fontFamily: fontFamily.FONTS.regular,
+        fontFamily: fontFamily.FONTS.Medium,
         color: COLORS.darkgray1,
         marginVertical: hp(0.5),
     },
     notificationTimestamp: {
-        fontSize: hp(1.6),
+        fontSize: hp(1.7),
         fontFamily: fontFamily.FONTS.regular,
         color: '#949494',
     },

@@ -20,11 +20,7 @@ const Welcome = ({ navigation }) => {
     const [loading, setLoading] = useState(false); // Add loading state
 
     const handleSignup = () => {
-        setLoading(true); // Set loading to true to show loader
-        setTimeout(() => {
-            setLoading(false); // Hide loader after 1 second
-            navigation.navigate("Login"); // Navigate after loading completes
-        }, 10);
+        navigation.navigate("Login");
     };
     return (
         <SafeAreaView style={styles.container}>

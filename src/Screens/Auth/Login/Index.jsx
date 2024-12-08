@@ -15,11 +15,7 @@ const Login = ({ navigation }) => {
     const [loading, setLoading] = useState(false); // Add loading state
 
     const handleLogin = () => {
-        setLoading(true); // Set loading to true to show loader
-        setTimeout(() => {
-            setLoading(false); // Hide loader after 1 second
-            navigation.navigate("TabStack"); // Navigate after loading completes
-        }, 1000);
+        navigation.navigate("TabStack");
     };
 
     return (

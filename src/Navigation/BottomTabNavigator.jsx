@@ -20,6 +20,7 @@ const TabStack = ({ navigation }) => {
             <Tab.Navigator
                 initialRouteName="Home"
                 screenOptions={{
+                    lazy: true,
                     tabBarShowLabel: false,
                     tabBarStyle: {
                         position: 'absolute',
@@ -29,7 +30,7 @@ const TabStack = ({ navigation }) => {
                         borderTopRightRadius: hp(2),
                         // marginBottom: hp(1),
                         paddingHorizontal: wp(2),
-                        width: wp(100),
+                        width: '100%',
                         alignSelf: 'center',
                         height: hp(7.5),
                         shadowColor: '#000',
@@ -145,6 +146,7 @@ const TabStack = ({ navigation }) => {
                     options={{
                         headerShown: false,
                         tabBarLabel: 'Setting',
+                        tabBarStyle: { display: 'none' },
                         tabBarIcon: ({ focused }) => (
                             <View style={styles.iconContainer}>
                                 <FontAwesome

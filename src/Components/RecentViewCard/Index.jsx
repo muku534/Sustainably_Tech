@@ -10,7 +10,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 const Card = ({ imageSource, productName, productSubtitle, price, onToggleFavorite, isFavorited }) => {
     return (
-        < View style={{
+        <View style={{
             justifyContent: 'space-between',
             flexDirection: 'column',
             alignItems: 'center',
@@ -20,7 +20,7 @@ const Card = ({ imageSource, productName, productSubtitle, price, onToggleFavori
         }>
             <View style={{
                 flexDirection: 'row',
-                width: wp(90),
+                width: '100%',
                 backgroundColor: COLORS.tertiaryWhite,
                 justifyContent: 'space-between',
                 alignItems: 'center',
