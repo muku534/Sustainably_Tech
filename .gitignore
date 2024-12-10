@@ -64,6 +64,7 @@ yarn-error.log
 .env
 .env.local
 my-release-key.jks
+key_store.jks
 
 
 android/app/release
