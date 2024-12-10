@@ -6,12 +6,11 @@ import { heightPercentageToDP as hp, widthPercentageToDP as wp } from '../Pixel/
 // Icon libraries
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 const iconLibraries = {
     MaterialCommunityIcons,
     Ionicons,
-    FontAwesome,
+    FontAwesome5,
 };
 
 const Header = ({
@@ -27,12 +26,14 @@ const Header = ({
     return (
         <View style={styles.headerContainer}>
             {/* Back Button */}
-            <TouchableOpacity onPress={() => navigation?.goBack()}>
-                <MaterialCommunityIcons
-                    name="arrow-left"
-                    size={hp(3.4)}
+            <TouchableOpacity
+                onPress={() => navigation.goBack()}
+                style={styles.backButton}
+            >
+                <FontAwesome5
+                    name="chevron-left"
+                    size={hp(2.6)}
                     color={COLORS.darkgray1}
-                    style={styles.iconSpacing}
                 />
             </TouchableOpacity>
 
@@ -68,9 +69,18 @@ const styles = StyleSheet.create({
     iconSpacing: {
         marginRight: wp(2),
     },
+    backButton: {
+        width: wp(10),
+        height: hp(5),
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#f1f1f1',
+        // padding: hp(1),
+        borderRadius: wp(3),
+    },
     headerTitle: {
         color: COLORS.darkgray,
-        fontSize: hp(2.5),
+        fontSize: hp(2.7),
         fontFamily: fontFamily.FONTS.bold,
     },
 });

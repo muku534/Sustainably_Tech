@@ -54,7 +54,7 @@ const Messages = ({ navigation }) => {
                     iconLibrary="Ionicons"
                     iconName="notifications-outline"
                     iconColor={COLORS.darkgray1}
-                    iconSize={hp(3.4)}
+                    iconSize={hp(3.6)}
                     onPress={() => navigation.navigate('Notification')}
                     navigation={navigation}
                 />

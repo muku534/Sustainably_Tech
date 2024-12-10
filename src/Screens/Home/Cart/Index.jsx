@@ -101,7 +101,7 @@ const Cart = ({ navigation }) => {
                     iconLibrary="Ionicons"
                     iconName="reorder-three"
                     iconColor={COLORS.darkgray1}
-                    iconSize={hp(3.4)}
+                    iconSize={hp(4)}
                     navigation={navigation}
                 />
                 {/* Cart Items */}

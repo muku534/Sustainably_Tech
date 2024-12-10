@@ -76,7 +76,7 @@ const Whishlists = ({ navigation }) => {
                     iconLibrary="MaterialCommunityIcons"
                     iconName="shopping-outline"
                     iconColor={COLORS.darkgray1}
-                    iconSize={hp(3.4)}
+                    iconSize={hp(3.7)}
                     onPress={() => navigation.navigate('Cart')}
                     navigation={navigation}
                 />

@@ -202,6 +202,7 @@ const Home = ({ navigation }) => {
                                 price={product.price}
                                 onToggleFavorite={() => toggleFavorite(index)}
                                 isFavorited={favorites[index]}
+                                onPress={() => navigation.navigate("ProductDetails")}
                             />
                         ))}
                     </View>

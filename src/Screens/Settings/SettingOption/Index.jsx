@@ -7,6 +7,7 @@ import {
 } from '../../../Components/Pixel/Index';
 import fontFamily from '../../../../constants/fontFamily';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const SettingOption = ({ icon, iconName, iconSize, label, onPress }) => (
@@ -42,9 +43,9 @@ const Setting = ({ navigation }) => {
                             onPress={() => navigation.goBack()}
                             style={styles.backButton}
                         >
-                            <MaterialCommunityIcons
-                                name="arrow-left"
-                                size={hp(3.4)}
+                            <FontAwesome5
+                                name="chevron-left"
+                                size={hp(3)}
                                 color={COLORS.darkgray1}
                             />
                         </TouchableOpacity>
@@ -138,8 +139,12 @@ const styles = StyleSheet.create({
         marginHorizontal: wp(3.5),
     },
     backButton: {
+        width: wp(10),
+        height: hp(5),
+        justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: '#f1f1f1',
-        padding: hp(1),
+        // padding: hp(1),
         borderRadius: wp(3),
     },
     headerTitle: {

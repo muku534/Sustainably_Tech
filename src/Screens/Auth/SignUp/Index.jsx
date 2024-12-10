@@ -20,7 +20,7 @@ const SignUp = ({ navigation }) => {
     };
 
     return (
-        <KeyboardAvoidingView style={{ flex: 1, backgroundColor: COLORS.lightGolden }} behavior='position'>
+        <KeyboardAvoidingView style={{ flex: 1, backgroundColor: COLORS.secondaryWhite }} behavior='position'>
             <StatusBar backgroundColor={COLORS.lightGolden} barStyle={'dark-content'} />
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.container}>
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
     },
     link: {
-        color: '#91b9b2',
+        color: '#4A46E9',
         fontSize: hp(2.2),
         fontWeight: 'bold',
     },

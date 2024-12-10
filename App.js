@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { AddAdress, Checkout, EditProfile, ForgotPassword, Login, Messages, Notification, Profile, Setting, SignUp, SplashScreen, Welcome, Whishlists } from './src/Screens/Index';
+import { AddAdress, Checkout, EditProfile, ForgotPassword, Login, Messages, Notification, ProductDetails, Profile, Setting, SignUp, SplashScreen, Welcome, Whishlists } from './src/Screens/Index';
 import TabStack from './src/Navigation/BottomTabNavigator';
 
 const Stack = createNativeStackNavigator();
@@ -22,6 +22,7 @@ const App = () => {
         <Stack.Screen name='Messages' component={Messages} options={{ headerShown: false }} />
         <Stack.Screen name='Whishlists' component={Whishlists} options={{ headerShown: false }} />
         <Stack.Screen name='Notification' component={Notification} options={{ headerShown: false }} />
+        <Stack.Screen name='ProductDetails' component={ProductDetails} options={{ headerShown: false }} />
 
         <Stack.Screen name='Setting' component={Setting} options={{ headerShown: false }} />
         <Stack.Screen name='Profile' component={Profile} options={{ headerShown: false }} />
