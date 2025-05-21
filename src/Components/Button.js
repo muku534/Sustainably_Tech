@@ -59,10 +59,9 @@ const styles = StyleSheet.create({
         height: hp(6),
     },
     text: {
-        color: COLORS.secondaryWhite,
-        fontFamily: fontFamily.FONTS.bold,
-        fontSize: hp(2.5),
-        textAlign: 'center',
+        fontSize: hp(2.4),
+        color: COLORS.tertiaryWhite,
+        fontFamily: fontFamily.FONTS.bold
     },
     loader: {
         position: 'absolute',

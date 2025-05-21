@@ -18,23 +18,25 @@ const Whishlists = ({ navigation }) => {
             id: 1,
             imageSource: require("../../../../assets/images/Computers.png"),
             productName: "MB Air M2 2022",
-            productSubtitle: "MacBook Series X",
-            price: "$2899.99", // price as a number for calculations
+            productSubtitle: "MacBook Series X with M2 Chip 13.6-inch Retina Display, All-day Battery",
+            price: "$2899.99",
             quantity: 1, // default quantity
+            isFavorited: false, // initial favorite status
         },
         {
             id: 2,
             imageSource: require("../../../../assets/images/Computers.png"),
             productName: "iPhone 14 Pro Max",
-            productSubtitle: "Apple Smartphone",
-            price: "$1399.99", // price as a number for calculations
+            productSubtitle: "Apple iPhone 14 Pro Max 6.7-inch OLED, A16 Bionic, Triple Camera",
+            price: "$1399.99",
             quantity: 1, // default quantity
+            isFavorited: false, // initial favorite status
         },
         {
             id: 3,
             imageSource: require("../../../../assets/images/Computers.png"),
             productName: "iPhone 14 Pro Max",
-            productSubtitle: "Apple Smartphone",
+            productSubtitle: "Apple iPhone 14 Pro Max 6.7-inch OLED, A16 Bionic, Triple Camera",
             price: "$1399.99", // price as a number for calculations
             quantity: 1, // default quantity
         },
@@ -63,20 +65,21 @@ const Whishlists = ({ navigation }) => {
             productName={item.productName}
             productSubtitle={item.productSubtitle}
             price={item.price}
+            onPress={() => navigation.navigate("ProductDetails")}
             onToggleFavorite={() => toggleFavorite(index)}
             isFavorited={favorites[index]}
         />
     );
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.secondaryWhite, marginVertical: hp(3), }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#f6f4f9', }}>
             <View style={styles.container}>
                 {/* Header */}
                 <Header
                     text="Wishlist"
                     iconLibrary="MaterialCommunityIcons"
                     iconName="shopping-outline"
-                    iconColor={COLORS.darkgray1}
-                    iconSize={hp(3.7)}
+                    iconColor={COLORS.darkgray}
+                    iconSize={hp(3.5)}
                     onPress={() => navigation.navigate('Cart')}
                     navigation={navigation}
                 />
@@ -98,6 +101,7 @@ export default Whishlists
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        marginVertical: hp(3),
     },
     headerContainer: {
         flexDirection: 'row',

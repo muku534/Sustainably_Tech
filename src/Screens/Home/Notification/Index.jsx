@@ -83,7 +83,6 @@ const NotificationScreen = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.screenContainer}>
-            <StatusBar backgroundColor={COLORS.white} barStyle='dark-content' />
             <Header
                 text="Notifications"
                 iconSize={hp(3.4)}
@@ -106,8 +105,8 @@ export default NotificationScreen;
 const styles = StyleSheet.create({
     screenContainer: {
         flex: 1,
-        marginVertical:hp(3),
-        backgroundColor: COLORS.white,
+        paddingVertical: hp(3.5),
+        backgroundColor: '#f6f4f9'
     },
     headerContainer: {
         flexDirection: 'row',
@@ -126,7 +125,7 @@ const styles = StyleSheet.create({
     },
     notificationCard: {
         flexDirection: 'row',
-        backgroundColor: '#f6f5fe',
+        backgroundColor: '#e6e3fc',
         height: hp(12),
         width: wp(100),
         marginVertical: hp(0.2),
@@ -146,19 +145,19 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     notificationTitle: {
-        fontSize: hp(2.1),
+        fontSize: hp(1.9),
         fontFamily: fontFamily.FONTS.bold,
         color: COLORS.darkgray,
     },
     notificationMessage: {
-        fontSize: hp(1.8),
+        fontSize: hp(1.7),
         fontFamily: fontFamily.FONTS.Medium,
         color: COLORS.darkgray1,
         marginVertical: hp(0.5),
     },
     notificationTimestamp: {
-        fontSize: hp(1.7),
-        fontFamily: fontFamily.FONTS.regular,
-        color: '#949494',
+        fontSize: hp(1.5),
+        fontFamily: fontFamily.FONTS.Medium,
+        color: COLORS.secondaryGray,
     },
 });

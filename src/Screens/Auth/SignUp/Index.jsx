@@ -122,6 +122,7 @@ export default SignUp
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        marginHorizontal: wp(1)
     },
     image: {
         width: '100%',
@@ -150,7 +151,9 @@ const styles = StyleSheet.create({
         paddingLeft: wp(2),
     },
     textInput: {
-        width: '100%',
+        fontSize: hp(1.8),
+        paddingHorizontal: wp(3),
+        fontFamily: fontFamily.FONTS.Medium,
         color: COLORS.darkgray
     },
     buttonContainer: {

@@ -71,7 +71,7 @@ const Home = ({ navigation }) => {
                             <Ionicons
                                 name="chatbox-ellipses-outline"
                                 size={hp(3.3)}
-                                color={COLORS.darkgray}
+                                color={COLORS.darkgray1}
                                 style={styles.iconSpacing}
                             />
                         </TouchableOpacity>
@@ -79,7 +79,7 @@ const Home = ({ navigation }) => {
                             <Ionicons
                                 name="notifications-outline"
                                 size={hp(3.3)}
-                                color={COLORS.darkgray}
+                                color={COLORS.darkgray1}
                             />
                         </TouchableOpacity>
                     </View>
@@ -180,9 +180,9 @@ const Home = ({ navigation }) => {
                 {/** product card */}
                 <View>
                     <View style={{ justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', marginVertical: hp(1), marginHorizontal: wp(5) }}>
-                        <Text style={{ fontSize: hp(2.2), fontFamily: fontFamily.FONTS.bold, color: COLORS.darkgray, }}>Popular Products</Text>
+                        <Text style={{ fontSize: hp(2), fontFamily: fontFamily.FONTS.bold, color: COLORS.darkgray, }}>Popular Products</Text>
                         <TouchableOpacity onPress={() => navigation.navigate("Products")}>
-                            <Text style={{ fontSize: hp(1.8), fontFamily: fontFamily.FONTS.Medium, color: COLORS.darkgray1, }}>View All</Text>
+                            <Text style={{ fontSize: hp(1.7), fontFamily: fontFamily.FONTS.Medium, color: COLORS.darkgray1, }}>View All</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -210,9 +210,9 @@ const Home = ({ navigation }) => {
                 {/** recent viewed product */}
                 <View>
                     <View style={{ justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', marginVertical: hp(1), marginHorizontal: wp(5) }}>
-                        <Text style={{ fontSize: hp(2.2), fontFamily: fontFamily.FONTS.bold, color: COLORS.darkgray, }}>Recent Viewed</Text>
+                        <Text style={{ fontSize: hp(2), fontFamily: fontFamily.FONTS.bold, color: COLORS.darkgray, }}>Recent Viewed</Text>
                         <TouchableOpacity onPress={() => navigation.navigate("Products")}>
-                            <Text style={{ fontSize: hp(1.8), fontFamily: fontFamily.FONTS.Medium, color: COLORS.darkgray1, }}>View All</Text>
+                            <Text style={{ fontSize: hp(1.7), fontFamily: fontFamily.FONTS.Medium, color: COLORS.darkgray1, }}>View All</Text>
                         </TouchableOpacity>
                     </View>
                     {productData.map((product, index) => (
@@ -222,6 +222,7 @@ const Home = ({ navigation }) => {
                             productName={product.productName}
                             productSubtitle={product.productSubtitle}
                             price={product.price}
+                            onPress={() => navigation.navigate("ProductDetails")}
                             onToggleFavorite={() => toggleFavorite(index)}
                             isFavorited={favorites[index]}
                         />

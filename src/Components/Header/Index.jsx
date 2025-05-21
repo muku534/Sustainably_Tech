@@ -32,7 +32,7 @@ const Header = ({
             >
                 <FontAwesome5
                     name="chevron-left"
-                    size={hp(2.6)}
+                    size={hp(2.2)}
                     color={COLORS.darkgray}
                 />
             </TouchableOpacity>
@@ -70,17 +70,17 @@ const styles = StyleSheet.create({
         marginRight: wp(2),
     },
     backButton: {
-        width: wp(10),
-        height: hp(5),
+        width: wp(8.5),
+        height: hp(4.5),
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#f1f1f1',
+        backgroundColor: '#e7e7e7',
         // padding: hp(1),
         borderRadius: wp(3),
     },
     headerTitle: {
         color: COLORS.darkgray,
-        fontSize: hp(2.7),
+        fontSize: hp(2.4),
         fontFamily: fontFamily.FONTS.bold,
     },
 });

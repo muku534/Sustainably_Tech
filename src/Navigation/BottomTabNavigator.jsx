@@ -30,7 +30,7 @@ const TabStack = ({ navigation }) => {
                         right: wp(5),
                         elevation: 5,
                         borderRadius: wp(10),
-                        height: hp(8),
+                        height: hp(7), // reduced height
                         shadowColor: '#000',
                         shadowOffset: {
                             width: 0,
@@ -38,14 +38,17 @@ const TabStack = ({ navigation }) => {
                         },
                         shadowOpacity: 0.1,
                         shadowRadius: 4,
+                        overflow: 'visible', // allow floating icons
                         paddingBottom: hp(0.5),
                         paddingTop: hp(0.5),
                     },
                     tabBarItemStyle: {
-                        marginVertical: hp(0.5)
+                        justifyContent: 'center', // vertically center icons
+                        alignItems: 'center',
                     },
                 }}
             >
+
                 <Tab.Screen
                     name="Home"
                     component={Home}
@@ -57,9 +60,8 @@ const TabStack = ({ navigation }) => {
                                 <AntDesign
                                     name="home"
                                     size={hp(focused ? 3.8 : 3.5)}
-                                    color={focused ? COLORS.primaryBlue : COLORS.darkgray}
+                                    color={focused ? '#4A46E9' : COLORS.darkgray}
                                 />
-                                {focused && <AnimatedDot />}
                             </View>
                         ),
                     }}
@@ -75,9 +77,8 @@ const TabStack = ({ navigation }) => {
                                 <MaterialCommunityIcons
                                     name="shopping-outline"
                                     size={hp(focused ? 3.8 : 3.5)}
-                                    color={focused ? COLORS.primaryBlue : COLORS.darkgray}
+                                    color={focused ? '#4A46E9' : COLORS.darkgray}
                                 />
-                                {focused && <AnimatedDot />}
                             </View>
                         ),
                         tabBarStyle: { display: 'none' },
@@ -136,9 +137,8 @@ const TabStack = ({ navigation }) => {
                                 <MaterialCommunityIcons
                                     name="cards-heart-outline"
                                     size={hp(focused ? 3.8 : 3.5)}
-                                    color={focused ? COLORS.primaryBlue : COLORS.darkgray}
+                                    color={focused ? '#4A46E9' : COLORS.darkgray}
                                 />
-                                {focused && <AnimatedDot />}
                             </View>
                         ),
                     }}
@@ -155,9 +155,8 @@ const TabStack = ({ navigation }) => {
                                 <FontAwesome
                                     name="user-o"
                                     size={hp(focused ? 3.6 : 3.3)}
-                                    color={focused ? COLORS.primaryBlue : COLORS.darkgray}
+                                    color={focused ? '#4A46E9' : COLORS.darkgray}
                                 />
-                                {focused && <AnimatedDot />}
                             </View>
                         ),
                     }}
@@ -167,50 +166,35 @@ const TabStack = ({ navigation }) => {
     );
 };
 
-const AnimatedDot = () => {
-    const animation = new Animated.Value(0);
-
-    React.useEffect(() => {
-        Animated.loop(
-            Animated.sequence([
-                Animated.timing(animation, { toValue: 1, duration: 100, useNativeDriver: true }),
-                Animated.timing(animation, { toValue: 0, duration: 100, useNativeDriver: true }),
-            ])
-        ).start();
-    }, []);
-
-    const dotStyle = {
-        transform: [{ scale: animation.interpolate({ inputRange: [0, 1], outputRange: [1, 1.2] }) }]
-    };
-
-    return <Animated.View style={[styles.dot, dotStyle]} />;
-};
 
 export default TabStack;
 
 const styles = StyleSheet.create({
-    dot: {
-        width: wp(1.5),
-        height: wp(1.5),
-        backgroundColor: COLORS.primaryBlue,
-        borderRadius: wp(0.75),
-        marginTop: hp(0.1),
-    },
     iconContainer: {
         alignItems: 'center',
+        justifyContent: 'center',
+        height: hp(6), // ensures consistent vertical centering
     },
     centerButtonWrapper: {
-        top: -hp(4),
+        top: -hp(3), // lowered slightly to fit better
         justifyContent: 'center',
         alignItems: 'center',
+        width: hp(8),
+        height: hp(8),
+        borderRadius: hp(4),
+        backgroundColor: 'transparent',
     },
     centerButton: {
-        width: hp(7),
-        height: hp(7),
-        borderRadius: hp(7),
+        width: hp(6.8),
+        height: hp(6.8),
+        borderRadius: hp(3.4),
         backgroundColor: COLORS.primaryBlue,
         justifyContent: 'center',
         alignItems: 'center',
-
+        elevation: 6,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.15,
+        shadowRadius: 4,
     },
 });

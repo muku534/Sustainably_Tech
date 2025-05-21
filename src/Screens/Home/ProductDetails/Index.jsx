@@ -13,7 +13,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 const ProductDetails = ({ navigation }) => {
     const [selectedColor, setSelectedColor] = useState('Black');
     const [selectedRam, setSelectedRam] = useState('8GB');
-
+    const [isFavorited, setIsFavorited] = useState(false);
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.secondaryWhite, marginVertical: hp(3), }}>
             <ScrollView contentContainerStyle={{ paddingBottom: hp(2) }}>
@@ -25,23 +25,22 @@ const ProductDetails = ({ navigation }) => {
                     >
                         <FontAwesome5
                             name="chevron-left"
-                            size={hp(3)}
+                            size={hp(2.2)}
                             color={COLORS.darkgray1}
                         />
                     </TouchableOpacity>
                     <View style={styles.iconRow}>
-                        <TouchableOpacity onPress={() => navigation.navigate('Whishlists')}>
+                        <TouchableOpacity style={styles.iconSpacing} onPress={() => setIsFavorited(!isFavorited)}>
                             <MaterialCommunityIcons
-                                name="cards-heart-outline"
-                                size={hp(3.6)}
-                                color={COLORS.darkgray1}
-                                style={styles.iconSpacing}
+                                name={isFavorited ? 'cards-heart' : 'cards-heart-outline'}
+                                size={hp(3.2)}
+                                color={isFavorited ? COLORS.red : COLORS.darkgray1}
                             />
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
                             <MaterialCommunityIcons
                                 name="shopping-outline"
-                                size={hp(3.6)}
+                                size={hp(3.2)}
                                 color={COLORS.darkgray1}
                             />
                         </TouchableOpacity>
@@ -158,8 +157,7 @@ const styles = StyleSheet.create({
         height: hp(5),
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#f1f1f1',
-        // padding: hp(1),
+        backgroundColor: '#e7e7e7',
         borderRadius: wp(3),
     },
     iconRow: {
@@ -184,7 +182,7 @@ const styles = StyleSheet.create({
     productName: {
         color: COLORS.black,
         fontFamily: fontFamily.FONTS.bold,
-        fontSize: hp(2.9),
+        fontSize: hp(2.2),
     },
     iconAndRatingsContainer: {
         flexDirection: 'row',
@@ -200,30 +198,30 @@ const styles = StyleSheet.create({
     ratingText: {
         color: COLORS.darkgray,
         fontFamily: fontFamily.FONTS.bold,
-        fontSize: hp(2),
+        fontSize: hp(1.8),
         marginLeft: wp(1), // Spacing between star and rating
     },
     reviewCountText: {
         color: COLORS.secondaryGray,
         fontFamily: fontFamily.FONTS.Medium,
-        fontSize: hp(1.8),
+        fontSize: hp(1.6),
         marginLeft: wp(1), // Spacing between rating and review count
     },
     productPrice: {
         color: COLORS.darkgray,
         fontFamily: fontFamily.FONTS.bold,
-        fontSize: hp(2.4),
+        fontSize: hp(2.1),
     },
     productPrice1: {
         color: COLORS.darkgray1,
         fontFamily: fontFamily.FONTS.bold,
         textDecorationLine: 'line-through',
-        fontSize: hp(1.8),
+        fontSize: hp(1.6),
     },
     productBrand: {
         color: COLORS.secondaryGray,
         fontFamily: fontFamily.FONTS.Medium,
-        fontSize: hp(2),
+        fontSize: hp(1.6),
         marginTop: hp(0.5),
     },
     optionsContainer: {
@@ -232,7 +230,7 @@ const styles = StyleSheet.create({
     optionTitle: {
         color: COLORS.black,
         fontFamily: fontFamily.FONTS.bold,
-        fontSize: hp(2.3),
+        fontSize: hp(2),
         marginBottom: hp(1),
     },
     colorOptionRow: {
@@ -249,7 +247,7 @@ const styles = StyleSheet.create({
     },
     selectedColorOptionButton: {
         borderColor: '#655CEE', // Highlight border color for selected
-        borderWidth: hp(0.6),
+        borderWidth: hp(0.4),
     },
     memoryOptionRow: {
         flexDirection: 'row',
@@ -267,8 +265,8 @@ const styles = StyleSheet.create({
     },
     memoryOptionText: {
         color: COLORS.black,
-        fontFamily: fontFamily.FONTS.medium,
-        fontSize: hp(2),
+        fontFamily: fontFamily.FONTS.Medium,
+        fontSize: hp(1.8),
     },
     selectedMemoryOptionText: {
         color: COLORS.secondaryWhite, // White text for selected pill
@@ -280,13 +278,13 @@ const styles = StyleSheet.create({
     descriptionTitle: {
         color: COLORS.black,
         fontFamily: fontFamily.FONTS.bold,
-        fontSize: hp(2.5),
+        fontSize: hp(2),
         marginBottom: hp(1),
     },
     descriptionText: {
         color: COLORS.darkgray1,
         fontFamily: fontFamily.FONTS.Medium,
-        fontSize: hp(2),
+        fontSize: hp(1.8),
         lineHeight: hp(2.8),
     },
     bottomButtonContainer: {
@@ -311,7 +309,6 @@ const styles = StyleSheet.create({
         // marginHorizontal: wp(2)
     },
     loginButton: {
-        borderRadius: wp(4),
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#655CEE',
@@ -320,7 +317,7 @@ const styles = StyleSheet.create({
     },
     loginButtonText: {
         color: COLORS.secondaryWhite,
-        fontSize: hp(2.5),
+        fontSize: hp(2),
         fontFamily: fontFamily.FONTS.bold,
         paddingVertical: hp(1.5),
     },

@@ -67,16 +67,17 @@ const Cart = ({ navigation }) => {
     };
 
     const renderProductItem = ({ item, index }) => (
-        <View style={styles.productContainer}>
+        <TouchableOpacity style={styles.productContainer} activeOpacity={0.8} onPress={() => navigation.navigate("ProductDetails")}>
             <View style={styles.productDetails}>
                 <Image source={item.imageSource} resizeMode="contain" style={styles.productImage} />
                 <View style={styles.productTextContainer}>
                     <Text style={styles.productName} numberOfLines={1}>
                         {item.productName}
                     </Text>
-                    <Text style={styles.productSubtitle} numberOfLines={2}>
+                    <Text style={styles.productSubtitle} numberOfLines={1}>
                         {item.productSubtitle}
                     </Text>
+                    <Text style={{ fontSize: hp(2), color: COLORS.darkgray, fontFamily: fontFamily.FONTS.bold }}>{item.price}</Text>
                 </View>
             </View>
             <View style={styles.quantityAndPriceContainer}>
@@ -89,21 +90,16 @@ const Cart = ({ navigation }) => {
                         <MaterialCommunityIcons name="plus" size={hp(2.5)} color={COLORS.darkgray1} />
                     </TouchableOpacity>
                 </View>
-                <Text style={{ fontSize: hp(1.8), color: COLORS.darkgray, fontFamily: fontFamily.FONTS.bold }}>{item.price}</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.secondaryWhite, }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#f6f4f9', }}>
             <View style={styles.container}>
                 {/* Header */}
                 <Header
                     text="My Cart"
-                    iconLibrary="Ionicons"
-                    iconName="reorder-three"
-                    iconColor={COLORS.darkgray1}
-                    iconSize={hp(4)}
                     navigation={navigation}
                 />
                 {/* Cart Items */}
@@ -123,8 +119,6 @@ const Cart = ({ navigation }) => {
 
                     <Button
                         title={"Checkout"}
-                    // onPress={handleSignup}
-                    // loading={loading}
                     />
                 </View>
 
@@ -187,13 +181,13 @@ const styles = StyleSheet.create({
         width: wp(40)
     },
     productName: {
-        paddingVertical: hp(0.5),
+        paddingTop: hp(0.5),
         fontSize: hp(2),
         color: COLORS.darkgray,
         fontFamily: fontFamily.FONTS.bold
     },
     productSubtitle: {
-        paddingVertical: hp(0.1),
+        paddingVertical: hp(0.2),
         fontSize: hp(1.6),
         color: COLORS.darkgray1,
         fontFamily: fontFamily.FONTS.Medium
@@ -231,12 +225,11 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: wp(8),
         borderTopRightRadius: wp(8),
         padding: hp(2),
-        shadowColor: COLORS.darkgray1,
-        shadowOffset: { width: 0, height: -2 },
-        shadowOpacity: 0.5,
-        shadowRadius: 4,
-        elevation: 4,
-        marginTop: 'auto',
+        shadowColor: COLORS.darkgray,
+        shadowOffset: { width: 0, height: 6 },
+        shadowOpacity: 0.3,
+        shadowRadius: 8,
+        elevation: 6,
     },
     summary: {
         marginVertical: hp(2),
@@ -247,15 +240,14 @@ const styles = StyleSheet.create({
         paddingVertical: hp(1),
     },
     summaryLabel: {
-        fontSize: hp(2.2),
+        fontSize: hp(1.9),
         fontFamily: fontFamily.FONTS.Medium,
         color: COLORS.darkgray1,
     },
     summaryValue: {
-        fontSize: hp(2.2),
-        fontFamily: fontFamily.FONTS.Medium,
+        fontSize: hp(2),
+        fontFamily: fontFamily.FONTS.bold,
         color: COLORS.darkgray1,
-        fontWeight: 'bold',
     },
     checkoutButton: {
         backgroundColor: '#3955E9',

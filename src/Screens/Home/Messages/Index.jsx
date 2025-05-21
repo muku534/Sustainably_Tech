@@ -54,7 +54,7 @@ const Messages = ({ navigation }) => {
                     iconLibrary="Ionicons"
                     iconName="notifications-outline"
                     iconColor={COLORS.darkgray1}
-                    iconSize={hp(3.6)}
+                    iconSize={hp(3.5)}
                     onPress={() => navigation.navigate('Notification')}
                     navigation={navigation}
                 />
@@ -75,11 +75,10 @@ export default Messages;
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
-        marginVertical:hp(3),
-        backgroundColor: COLORS.secondaryWhite,
+        backgroundColor: '#f6f4f9'
     },
     container: {
-        flex: 1,
+        paddingVertical: hp(3.5),
     },
     headerContainer: {
         flexDirection: 'row',
@@ -126,16 +125,16 @@ const styles = StyleSheet.create({
     },
     senderName: {
         color: COLORS.darkgray,
-        fontSize: hp(2.2),
+        fontSize: hp(2),
         fontFamily: fontFamily.FONTS.bold,
     },
     messageText: {
-        color: COLORS.gray,
-        fontSize: hp(2),
-        fontFamily: fontFamily.FONTS.regular,
+        color: COLORS.secondaryGray,
+        fontSize: hp(1.8),
+        fontFamily: fontFamily.FONTS.Medium,
     },
     timestamp: {
-        color: COLORS.gray,
+        color: COLORS.secondaryGray,
         fontSize: hp(1.7),
         fontFamily: fontFamily.FONTS.bold,
     },
