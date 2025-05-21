@@ -24,8 +24,8 @@ const Button = ({
                 <LinearGradient
                     colors={['#4A46E9', '#B494F7', '#4A46E9', '#B494F7']} // New lighter gradient
                     style={styles.gradient}
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 1, y: 0 }}
+                    start={{ x: 1, y: 1 }}
+                    end={{ x: 0, y: 0 }}
                 >
                     {loading ? (
                         <Loader
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: wp(4),
         width: wp(90),
-        height: hp(6.5),
+        height: hp(6),
     },
     text: {
         color: COLORS.secondaryWhite,
