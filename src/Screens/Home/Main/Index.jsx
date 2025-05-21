@@ -240,6 +240,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         marginHorizontal: wp(4.5),
+        marginBottom: hp(1)
     },
     profileImage: {
         height: wp(11),

@@ -92,10 +92,10 @@ const TabStack = ({ navigation }) => {
                         tabBarLabel: 'Products',
                         tabBarIcon: ({ focused }) => (
                             <LinearGradient
-                                colors={['#4A46E9', '#B494F7', '#4A46E9', '#B494F7']} // New lighter gradient
+                                colors={['#4A46E9', '#B494F7', '#4A46E9', '#B494F7']}
                                 style={styles.centerButton}
-                                start={{ x: 0, y: 0 }} // Gradient start point
-                                end={{ x: 1, y: 0 }}   // Gradient end point (horizontal)
+                                start={{ x: 0, y: 0 }}
+                                end={{ x: 1, y: 0 }}
                             >
                                 <MaterialCommunityIcons
                                     name="view-grid-outline"
@@ -110,10 +110,10 @@ const TabStack = ({ navigation }) => {
                                 style={styles.centerButtonWrapper}
                             >
                                 <LinearGradient
-                                    colors={['#4A46E9', '#B494F7']} // New lighter gradient
+                                    colors={['#4A46E9', '#B494F7']}
                                     style={styles.centerButton}
-                                    start={{ x: 0, y: 0 }} // Gradient start point
-                                    end={{ x: 1, y: 0 }}   // Gradient end point (horizontal)
+                                    start={{ x: 0, y: 0 }}
+                                    end={{ x: 1, y: 0 }}
                                 >
                                     <MaterialCommunityIcons
                                         name="view-grid-outline"

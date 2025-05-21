@@ -13,12 +13,12 @@ import LinearGradient from 'react-native-linear-gradient'
 
 const SearchBar = ({ searchText, setSearchText, onFilterPress }) => {
     return (
-        <View> {/*Search Bar */}
+        <View>
             <View style={styles.searchContainer}>
                 {searchText.length === 0 && (
                     <Octicons
                         name="search"
-                        size={hp(3)}
+                        size={hp(2.5)}
                         color={COLORS.darkgray}
                         style={styles.searchIcon}
                     />
@@ -33,8 +33,15 @@ const SearchBar = ({ searchText, setSearchText, onFilterPress }) => {
             </View>
 
             {/* Floating Filter Button */}
-            <TouchableOpacity style={styles.filterButton} activeOpacity={0.7} onPress={onFilterPress}>
-                <MaterialCommunityIcons name="tune-variant" size={hp(3.5)} color={COLORS.tertiaryWhite} />
+            <TouchableOpacity activeOpacity={0.7} onPress={onFilterPress}>
+                <LinearGradient
+                    colors={['#4A46E9', '#B494F7']}
+                    style={styles.filterButton}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 0 }}
+                >
+                    <MaterialCommunityIcons name="tune-variant" size={hp(3)} color={COLORS.tertiaryWhite} />
+                </LinearGradient>
             </TouchableOpacity>
         </View>
     )
@@ -50,7 +57,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#f1f1f1',
         borderRadius: wp(8),
         paddingHorizontal: wp(4),
-        paddingVertical: hp(1),
         marginHorizontal: wp(3.5),
         // shadowColor: "#000",
         // shadowOffset: { width: 0, height: 2 },
@@ -63,15 +69,16 @@ const styles = StyleSheet.create({
     },
     searchInput: {
         flex: 1,
+        justifyContent: 'center',
         fontSize: hp(1.7),
-        height: hp(5),
+        height: hp(6),
         color: COLORS.darkgray,
         fontFamily: fontFamily.FONTS.Medium,
     },
     filterButton: {
         position: 'absolute',
-        bottom: hp(1.4),
-        right: wp(5),
+        bottom: hp(1.2),
+        right: wp(4.5),
         // backgroundColor: COLORS.lightBlue,
         backgroundColor: '#4A46E9',
         borderRadius: hp(3),

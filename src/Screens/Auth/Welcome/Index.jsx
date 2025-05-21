@@ -81,21 +81,17 @@ const Welcome = ({ navigation }) => {
                     </Text>
 
                     <View style={styles.buttonWrapper}>
-                        <LinearGradient
-                            colors={[COLORS.darkgray, COLORS.darkgray]}
-                            style={styles.button}
-                            start={{ x: 0, y: 0 }}
-                            end={{ x: 1, y: 1 }}
-                        >
-                            <TouchableOpacity
-                                onPress={handleSignup}
-                                disabled={loading}
-                                style={styles.buttonInner}
-                                activeOpacity={0.8}
+                        <TouchableOpacity style={styles.button} disabled={loading} activeOpacity={0.8} onPress={handleSignup}>
+                            <LinearGradient
+                                colors={[COLORS.darkgray, COLORS.darkgray]}
+                                style={styles.gradient}
+                                start={{ x: 1, y: 1 }}
+                                end={{ x: 0, y: 0 }}
                             >
-                                <Text style={styles.buttonText}>Get Started</Text>
-                            </TouchableOpacity>
-                        </LinearGradient>
+                                <Text style={styles.loginButtonText}>Get Started</Text>
+                            </LinearGradient>
+                        </TouchableOpacity>
+                      
                     </View>
                 </View>
             </ScrollView>
@@ -180,9 +176,19 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: hp(5),
     },
-    button: {
+    gradient: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: wp(4),
         width: wp(80),
-        height: hp(6.5),
+        height: hp(6),
+    },
+    loginButtonText: {
+        fontSize: hp(2.4),
+        color: COLORS.tertiaryWhite,
+        fontFamily: fontFamily.FONTS.bold
+    },
+    button: {
         borderRadius: wp(4),
         justifyContent: 'center',
         alignItems: 'center',
@@ -191,16 +197,5 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 6,
         elevation: 6,
-    },
-    buttonInner: {
-        width: '100%',
-        height: '100%',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    buttonText: {
-        color: COLORS.secondaryWhite,
-        fontSize: hp(2.5),
-        fontFamily: fontFamily.FONTS.bold,
     },
 });
