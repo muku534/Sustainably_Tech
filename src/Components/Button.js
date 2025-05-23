@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: wp(4),
         width: wp(90),
-        height: hp(6),
+        height: hp(5.8),
     },
     text: {
         fontSize: hp(2.4),

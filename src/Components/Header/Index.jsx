@@ -29,6 +29,7 @@ const Header = ({
             <TouchableOpacity
                 onPress={() => navigation.goBack()}
                 style={styles.backButton}
+                activeOpacity={0.7}
             >
                 <FontAwesome5
                     name="chevron-left"
@@ -70,11 +71,16 @@ const styles = StyleSheet.create({
         marginRight: wp(2),
     },
     backButton: {
-        width: wp(8.5),
+        width: wp(9),
         height: hp(4.5),
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#e7e7e7',
+        backgroundColor: COLORS.white,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 5,
         // padding: hp(1),
         borderRadius: wp(3),
     },

@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: wp(4),
         width: wp(73),
-        height: hp(6),
+        height: hp(5.7),
     },
     loginButtonText: {
         fontSize: hp(2.4),
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.secondaryWhite,
         flexDirection: 'row',
         borderRadius: wp(4),
-        height: hp(6),
+        height: hp(5.7),
         alignItems: 'center',
         shadowColor: COLORS.darkgray,
         shadowOffset: { width: 0, height: 6 },

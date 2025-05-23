@@ -78,7 +78,7 @@ const Whishlists = ({ navigation }) => {
                     text="Wishlist"
                     iconLibrary="MaterialCommunityIcons"
                     iconName="shopping-outline"
-                    iconColor={COLORS.darkgray}
+                    iconColor={COLORS.darkgray1}
                     iconSize={hp(3.5)}
                     onPress={() => navigation.navigate('Cart')}
                     navigation={navigation}

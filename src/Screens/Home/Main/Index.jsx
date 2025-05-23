@@ -27,20 +27,27 @@ const Home = ({ navigation }) => {
         {
             id: 1,
             imageSource: require("../../../../assets/images/Computers.png"),
-            productName: "MB Air M2 2022",
-            productSubtitle: "MacBook Series X with M2 Chip 13.6-inch Retina Display, All-day Battery",
-            price: "$2899.99",
-            isFavorited: false, // initial favorite status
+            productName: "MacBook Air M2 2022",
+            productSubtitle: "13.6-inch Retina Display, M2 Chip, All-day Battery Life",
+            price: "$1199.99",
+            isFavorited: false,
         },
         {
             id: 2,
-            imageSource: require("../../../../assets/images/Computers.png"),
-            productName: "iPhone 14 Pro Max",
-            productSubtitle: "Apple iPhone 14 Pro Max 6.7-inch OLED, A16 Bionic, Triple Camera",
+            imageSource: require("../../../../assets/images/Acer_Aspire_3_AMD_3020e_Dual_core_Processor-removebg-preview.png"),
+            productName: "Dell XPS 13",
+            productSubtitle: "13.4-inch UHD+, Intel Core i7, 16GB RAM, 512GB SSD",
             price: "$1399.99",
-            isFavorited: false, // initial favorite status
+            isFavorited: false,
         },
-        // Add more products here...
+        {
+            id: 3,
+            imageSource: require("../../../../assets/images/th__1_-removebg-preview.png"),
+            productName: "HP Spectre x360",
+            productSubtitle: "13.5-inch Touchscreen, Intel Evo i7, 16GB RAM, 1TB SSD",
+            price: "$1499.99",
+            isFavorited: false,
+        },
     ];
 
     // State to track the favorite status of each product
@@ -56,8 +63,8 @@ const Home = ({ navigation }) => {
     };
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white, justifyContent: 'center' }}>
-            <ScrollView contentContainerStyle={{ paddingVertical: hp(5), paddingBottom: hp(12) }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#f6f4f9', justifyContent: 'center' }}>
+            <ScrollView contentContainerStyle={{ paddingVertical: hp(5), paddingBottom: hp(1) }}>
                 {/**Header */}
                 <View style={styles.headerContainer}>
                     {/* Profile Picture and Icons */}
@@ -192,7 +199,7 @@ const Home = ({ navigation }) => {
                         justifyContent: 'space-between',
                         marginHorizontal: wp(3),
                     }}>
-                        {productData.map((product, index) => (
+                        {productData.slice(0, 2).map((product, index) => (
                             <ProductCard
                                 key={product.id}
                                 imageSource={product.imageSource}
@@ -204,6 +211,7 @@ const Home = ({ navigation }) => {
                                 onPress={() => navigation.navigate("ProductDetails")}
                             />
                         ))}
+
                     </View>
                 </View>
 

@@ -64,6 +64,11 @@ const Login = ({ navigation }) => {
                             </View>
                         </View>
 
+                        {/* Forgot Password */}
+                        <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.navigate('ForgotPassword')}>
+                            <Text style={styles.forgotPassword}>Forgot Password ?</Text>
+                        </TouchableOpacity>
+
                         <View style={styles.buttonContainer}>
                             <TouchableOpacity disabled={loading} activeOpacity={0.7} onPress={handleLogin}>
                                 <LinearGradient
@@ -147,19 +152,25 @@ const styles = StyleSheet.create({
         fontFamily: fontFamily.FONTS.Medium,
         color: COLORS.darkgray
     },
+    forgotPassword: {
+        alignSelf: 'flex-end',
+        color: COLORS.darkgray,
+        fontFamily: fontFamily.FONTS.Medium,
+        fontSize: hp(1.8),
+        marginVertical: hp(2)
+    },
     buttonContainer: {
         marginLeft: wp(2.2),
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: hp(3),
     },
     gradient: {
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: wp(4),
         width: wp(73),
-        height: hp(6),
+        height: hp(5.7),
     },
     loginButtonText: {
         fontSize: hp(2.4),
@@ -216,7 +227,7 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.secondaryWhite,
         flexDirection: 'row',
         borderRadius: wp(4),
-        height: hp(6),
+        height: hp(5.7),
         alignItems: 'center',
         shadowColor: COLORS.darkgray,
         shadowOffset: { width: 0, height: 6 },

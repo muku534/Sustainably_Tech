@@ -10,6 +10,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import LinearGradient from 'react-native-linear-gradient';
 
 const Tab = createBottomTabNavigator();
@@ -24,13 +25,13 @@ const TabStack = ({ navigation }) => {
                     tabBarShowLabel: false,
                     tabBarStyle: {
                         backgroundColor: COLORS.white,
-                        position: 'absolute',
-                        bottom: hp(2),
-                        left: wp(5),
-                        right: wp(5),
-                        elevation: 5,
-                        borderRadius: wp(10),
-                        height: hp(7), // reduced height
+                        // position: 'absolute',
+                        // bottom: hp(2),
+                        // left: wp(5),
+                        // right: wp(5),
+                        // elevation: 5,
+                        // borderRadius: wp(10),
+                        height: hp(8), // reduced height
                         shadowColor: '#000',
                         shadowOffset: {
                             width: 0,
@@ -38,7 +39,6 @@ const TabStack = ({ navigation }) => {
                         },
                         shadowOpacity: 0.1,
                         shadowRadius: 4,
-                        overflow: 'visible', // allow floating icons
                         paddingBottom: hp(0.5),
                         paddingTop: hp(0.5),
                     },
@@ -57,13 +57,22 @@ const TabStack = ({ navigation }) => {
                         tabBarLabel: 'Home',
                         tabBarIcon: ({ focused }) => (
                             <View style={styles.iconContainer}>
-                                <AntDesign
-                                    name="home"
-                                    size={hp(focused ? 3.8 : 3.5)}
-                                    color={focused ? '#4A46E9' : COLORS.darkgray}
-                                />
+                                {focused ?
+                                    <MaterialIcons
+                                        name="home"
+                                        size={hp(4.1)}
+                                        color={'#4A46E9'}
+                                    />
+                                    :
+                                    <AntDesign
+                                        name="home"
+                                        size={hp(3.3)}
+                                        color={COLORS.darkgray1}
+                                    />
+                                }
                             </View>
                         ),
+                        tabBarLabel: "Home",
                     }}
                 />
                 <Tab.Screen
@@ -75,13 +84,14 @@ const TabStack = ({ navigation }) => {
                         tabBarIcon: ({ focused }) => (
                             <View style={styles.iconContainer}>
                                 <MaterialCommunityIcons
-                                    name="shopping-outline"
+                                    name={focused ? "cart" : "cart-outline"}
                                     size={hp(focused ? 3.8 : 3.5)}
-                                    color={focused ? '#4A46E9' : COLORS.darkgray}
+                                    color={focused ? '#4A46E9' : COLORS.darkgray1}
                                 />
                             </View>
                         ),
                         tabBarStyle: { display: 'none' },
+                        tabBarLabel: "Cart",
                     }}
                 />
                 {/* Floating Central Button */}
@@ -91,6 +101,7 @@ const TabStack = ({ navigation }) => {
                     options={{
                         headerShown: false,
                         tabBarLabel: 'Products',
+                        tabBarStyle: { display: 'none' },
                         tabBarIcon: ({ focused }) => (
                             <LinearGradient
                                 colors={['#4A46E9', '#B494F7', '#4A46E9', '#B494F7']}
@@ -109,6 +120,7 @@ const TabStack = ({ navigation }) => {
                             <TouchableOpacity
                                 {...props}
                                 style={styles.centerButtonWrapper}
+                                activeOpacity={0.7}
                             >
                                 <LinearGradient
                                     colors={['#4A46E9', '#B494F7']}
@@ -135,12 +147,13 @@ const TabStack = ({ navigation }) => {
                         tabBarIcon: ({ focused }) => (
                             <View style={styles.iconContainer}>
                                 <MaterialCommunityIcons
-                                    name="cards-heart-outline"
+                                    name={focused ? "cards-heart" : "cards-heart-outline"}
                                     size={hp(focused ? 3.8 : 3.5)}
-                                    color={focused ? '#4A46E9' : COLORS.darkgray}
+                                    color={focused ? '#4A46E9' : COLORS.darkgray1}
                                 />
                             </View>
                         ),
+                        tabBarLabel: "Whishlist",
                     }}
                 />
                 <Tab.Screen
@@ -149,16 +162,17 @@ const TabStack = ({ navigation }) => {
                     options={{
                         headerShown: false,
                         tabBarLabel: 'Setting',
-                        tabBarStyle: { display: 'none' },
+                        // tabBarStyle: { display: 'none' },
                         tabBarIcon: ({ focused }) => (
                             <View style={styles.iconContainer}>
                                 <FontAwesome
-                                    name="user-o"
+                                    name={focused ? "user" : "user-o"}
                                     size={hp(focused ? 3.6 : 3.3)}
-                                    color={focused ? '#4A46E9' : COLORS.darkgray}
+                                    color={focused ? '#4A46E9' : COLORS.darkgray1}
                                 />
                             </View>
                         ),
+                        tabBarLabel: "Setting",
                     }}
                 />
             </Tab.Navigator>
@@ -176,7 +190,7 @@ const styles = StyleSheet.create({
         height: hp(6), // ensures consistent vertical centering
     },
     centerButtonWrapper: {
-        top: -hp(3), // lowered slightly to fit better
+        top: -hp(4), // lowered slightly to fit better
         justifyContent: 'center',
         alignItems: 'center',
         width: hp(8),

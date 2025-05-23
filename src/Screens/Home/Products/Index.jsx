@@ -191,7 +191,7 @@ const Products = ({ navigation }) => {
     );
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.secondaryWhite, marginVertical: hp(3), }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.secondaryWhite, }}>
             <View style={styles.container}>
                 {/**Header */}
                 <Header
@@ -315,7 +315,8 @@ export default Products
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        marginVertical: hp(3),
     },
     headerContainer: {
         flexDirection: 'row',
